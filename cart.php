@@ -1,11 +1,11 @@
-<?php
+<!-- <?php
     session_start();
     include("config.php");
 
     if ($_SESSION["Login"] != "YES") {
         header("Location: guest_form.php");
     }
-?>
+?> -->
 
 <html>
 <head>
@@ -24,7 +24,7 @@
     .body-container2 {
     max-width: 900px;
     margin: auto;
-    justify-content: space-around;
+    
     padding-top: 8rem; /*container up padding*/
     padding-bottom: 8rem; /*container up padding*/
 }

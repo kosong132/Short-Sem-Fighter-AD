@@ -34,7 +34,7 @@ if(!isset($_SESSION['COUNTER'])){
 
 <html lang="en">   
 <head>
-   <title>Some Web Page</title>
+   <title>Customer Order Page</title>
    <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
    <?php if($_SESSION['LEVEL']==1):?>
    <link rel='stylesheet' href='css/y-css/serviceSeller.css'/>
