@@ -278,7 +278,7 @@ if (isset($_SESSION['alert_message'])) {
         <div class='num'>
         <input type='hidden' name='menu_code[]' value='{$row['menu_code']}'/>
         <input type='number' name='quantity' class='quantity' value='0' min='1'/>
-      </div>
+        </div>
         <div class='addfunction'>
         <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
         </div></div>

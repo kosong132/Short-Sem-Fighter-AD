@@ -155,7 +155,7 @@ button:hover{
   align-items: center;
   gap: 10px;
 }
-.quantity-control {
+/* .quantity-control {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -177,7 +177,7 @@ button:hover{
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .quantity {
   width: 50px;
