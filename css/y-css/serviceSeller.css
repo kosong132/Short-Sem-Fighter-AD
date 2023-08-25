@@ -8,9 +8,10 @@
 
 .grid-container2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: 30px;
     height: min-content;
+    background-color:rgba(89, 105, 136, 0.35);
 }
 
 .editMenu {
@@ -49,11 +50,18 @@
 }
 
 .food{
-    text-align: center;
+  display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.thumb{
+  text-align: center;
+  grid-column: 1/2;
 }
 
 .details {
     display: grid;
+    grid-column:2/3;
+    
     grid-template-columns: repeat(3, 0.8fr);
     grid-template-rows: repeat(3, 0.8fr);
     gap: 10px;

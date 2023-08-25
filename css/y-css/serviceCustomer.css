@@ -8,9 +8,10 @@
 
 .grid-container2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-rows: 1fr;
+    gap: 5px;
     height: min-content;
+    background-color:rgba(89, 105, 136, 0.35);
 }
 
 .editMenu {
@@ -86,37 +87,46 @@ button:hover{
     background-color: rgb(230, 230, 230);
 }
 
+.body-container{
+  background-color: rgba(255, 255, 255, 0.8);
+  padding-bottom: 2rem
+}
 .body-container img {
-    height: 250px;
-    width: 250px;
+    height: 180px;
+    width: 180px;
+}
+.picturesize{
+  display: block;
+  border-radius: 20px;
+  margin: 2rem;
 }
 
 .food{
-    text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  
 }
 
 .details {
-    display: grid;
-    grid-template-columns: repeat(3, 0.8fr);
-    grid-template-rows: repeat(3, 0.8fr);
-    gap: 10px;
-    margin: 10px 0;
+  display: grid;
+  grid-column:2/3;
+  grid-template-rows: 1fr 1.8fr 2fr;
+  margin: 2rem 1rem 1rem;
 }
 
-.details .foodID {
-  grid-column: 1 / 4;
-  grid-row: 1 / 2;
-  text-align: left;
+ .foodIDs {
+  display: grid;
+  font-weight: bold;
+  font-size: 24px;
+
 }
 
-.foodIDs {
-  grid-column: 1 / 4;
-  grid-row: 1 / 2;
-  display: flex;
-}
+
+
 
 .foodcode{
   margin-right: 1rem;
+  
   margin-top: 0.15rem;
 }
 
@@ -140,12 +150,44 @@ button:hover{
   width:100%;
 }
 
-.num{
+.num {
   display: flex;
-  justify-content: right;
+  align-items: center;
+  gap: 10px;
 }
-.details .name {
-    grid-column: 1 / 3;
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-input {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.quantity-btn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quantity {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.details .menuname {
+    grid-column: 2/3;
     grid-row: 1 / 2;
     text-align: left;
     margin-left: 18px;
@@ -155,12 +197,14 @@ button:hover{
     grid-column: 1 / 4;
     grid-row: 2 / 3;
     text-align: left;
+    font-weight: lighter;
+    font-size: 20px;
 }
 
 .details .price {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: left;
 }
 
 #plusButton {

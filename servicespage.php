@@ -43,7 +43,16 @@ if(!isset($_SESSION['COUNTER'])){
    <link rel='stylesheet' href='css/y-css/serviceCustomer.css'/>
    <?php endif;?>
    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--windows size responsive-->
- </head>
+  <style>
+  body {
+        background-image: url('img/backgroundImage/Cart_background.jpg');
+        background-size: cover;        
+        background-repeat: no-repeat;
+        background-attachment: fixed;   /* Keeps the background image fixed while scrolling */
+        
+
+    }</style>
+  </head>
 
 <body id="service">
 
@@ -259,18 +268,21 @@ if (isset($_SESSION['alert_message'])) {
 
             <img class="picturesize" src="img/menuimages/<?=$row['menu_img']?>">
             
-        <?php echo "</div><div class='details'>
+        <?php echo "</div>
+        <div class='details'>
         <div class='foodIDs'>
-        <p class='foodcode'>$row[menu_code]</p>
-        <p>$row[menu_name]</p></div>
+        <div class='foodcode'>$row[menu_code]</div>
+        <div class='menuname'>$row[menu_name]</div></div>
         <div class='engName'> $row[menu_description] </div>
         <div class='lastrow'><div class='price'> RM $row[menu_price] </div>
         <div class='num'>
         <input type='hidden' name='menu_code[]' value='{$row['menu_code']}'/>
-        <input type='number' name='quantity' class='quantity' value='0' min='1'/></div></div>
+        <input type='number' name='quantity' class='quantity' value='0' min='1'/>
+      </div>
         <div class='addfunction'>
         <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
-        </div>
+        </div></div>
+        
       </div></div></form>";
         } } ?>
           
