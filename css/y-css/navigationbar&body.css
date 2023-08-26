@@ -6,7 +6,7 @@
 }
 
 .menu-container {
-  background-color: black;
+  background-color: #596988;
   padding: 0 40px;
   width: 100%;
   height: 80px;
@@ -32,7 +32,7 @@
   display: flex;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: #596988;
 }
 
 .header1 {
@@ -86,21 +86,21 @@ transition: ease 0.3s;
   text-decoration: underline;
   font-size: 23px;
   background-color: rgb(232, 232, 232);
-  color: #000;
+  color: #596988;
 }
 
 .login {
-  background-color: black;
+  background-color: #596988;
   display: flex;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: #596988;
 }
 
 .login .logout{
   display: flex;
   align-items: center;
-  background-color:rgb(0, 0, 0);
+  background-color:#596988;
   color: white;
   padding: 14px 20px;
   border: none;
@@ -112,7 +112,7 @@ transition: ease 0.3s;
 .login a {
   display: flex;
   align-items: center;
-  background-color:rgb(0, 0, 0);
+  background-color:#596988;
   color: white;
   padding: 14px 20px;
   margin: 25px 0;
@@ -128,7 +128,7 @@ transition: ease 0.3s;
 .logout {
   display: flex;
   align-items: center;
-  background-color:rgb(0, 0, 0);
+  background-color:#596988;
   color: white;
   padding: 14px 20px;
   margin: 25px 0;
@@ -148,7 +148,7 @@ transition: ease 0.3s;
   text-decoration: underline;
   font-size: 23px;
   background-color: rgb(232, 232, 232);
-  color: #000;
+  color: #596988;
 }
 
 .body-container {
@@ -170,7 +170,7 @@ transition: ease 0.3s;
 }
 
 .position a{
-  color:black;
+  color:#596988;
 }
 
 
@@ -185,7 +185,7 @@ transition: ease 0.3s;
   padding: 10px;
   grid-column: 1 / 2;
   background-color: rgb(199, 199, 199);
-  color: rgb(0, 0, 0);
+  color: #596988;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
@@ -198,7 +198,7 @@ transition: ease 0.3s;
   grid-column: 3 / 4;
   background-color: #f44336;
   font-size: 20px;
-  color: rgb(0, 0, 0);
+  color:#596988;
   padding: 14px 20px;
   margin: 8px 0;
   margin-right: 15px;

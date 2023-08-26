@@ -10,7 +10,7 @@ if ($_SESSION["Login"] != "YES") {
 ?>
 <html>
     <head>
-        <title>Jojoe Food</title>
+        <title>Tepi Sungai</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
         <link rel="stylesheet" href="css/d-css/mainPage.css">
     </head>
@@ -24,9 +24,9 @@ if ($_SESSION["Login"] != "YES") {
           <div class="grid-container">
             <div class="oneTwo">
             <div class="one">
-    <h1>JOJOE FOOD</h1><br><br>
-    <p>is a food ordering and delivering</p>
-    <p>platform inside UTM</p><br><br>
+    <h1>Tepi Sungai</h1><br><br>
+    <p>Food Ordering System </p>
+    <p>for all UTMians</p><br><br>
     
 <?php
     if ($_SESSION['LEVEL'] == 1) {

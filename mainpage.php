@@ -21,7 +21,7 @@ if (!isset($_COOKIE['visitor_count'])) {
             <div class='menu'>
               <div class ='left_menu'>
                   <div class="logo">
-                    <img src="img/headerImage/image (1).png" style="height: 50px; width: 50px; text-align: center">
+                    <img src="img\headerImage\TS-removebg-preview 2.png" style="height: 60px; width: 100px; text-align: center">
                   </div>   
                     <div class="headermain"><a data-active="home" href="mainpage.php" >HOME</a></div> 
               </div>
@@ -36,9 +36,9 @@ if (!isset($_COOKIE['visitor_count'])) {
             <div class="grid-container">
             <div class="oneTwo">
                     <div class="one">
-                        <h1>JOJOE FOOD</h1><br><br>
-                        <p>is a food ordering and delivering</p>
-                        <p>platform inside UTM</p><br><br>
+                        <h1>Tepi Sungai UTM</h1><br><br>
+                        <p>a food ordering system</p>
+                        <p>for all UTMians</p><br><br>
                         <button class="btn signUpNow" onclick="location.href='signup.php'">SIGN UP NOW</a></button>
                     </div>
                     <div class="two">

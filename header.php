@@ -5,7 +5,7 @@
             <div class='menu'>
               <div class ='left_menu'>
                   <div class="logo">
-                    <img src="img/headerImage/image (1).png" style="height: 50px; width: 50px; text-align: center">
+                    <img src="img\headerImage\TS-removebg-preview 2.png" style="height: 60px; width: 100px; text-align: center">
                   </div>  
                   <div class="header1"> 
                     <div class="header"><a data-active="home" href="homepage.php">HOME</a></div> 
