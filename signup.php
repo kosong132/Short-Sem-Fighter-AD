@@ -114,7 +114,7 @@ if (mysqli_query($conn, $sql)) {
         </div>
         <div class="rightcontainer">
         <div class="foodcontainer" ><img class="foodlogo" src="img/image/platefood.png">
-            <h1>Jojoe Food</h1></div>
+            <h1>Tepi Sungai UTM</h1></div>
         </div>
     </div>
 

@@ -47,7 +47,7 @@ if ($_SESSION["Login"] != "YES") {
             echo "</div>";
         echo "<a class='btn signUpNow' href='servicespage.php'>EDIT NOW</a>";
     } else {
-        echo "<a class='btn signUpNow' href='servicespage.php'>ORDER NOW</a>";
+        echo "<a class='btn signUpNow' href='servicespage.php'>Start Order</a>";
     }
     ?>
 </div>
