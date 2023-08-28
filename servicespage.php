@@ -97,11 +97,13 @@ include("header.php");
     <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
     <div class='engName'> $row[menu_description] </div>
     <div class='price'> RM$row[menu_price] </div>
+    
     <div class='edit allbutton'>
     <form method='get' action='servicespage.php'>
       <input name='menucode' type='hidden' value='$row[menu_code]'/>
       <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
     </form></div>
+
     <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
   </div></div>";
     } } ?>
