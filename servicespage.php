@@ -106,7 +106,8 @@ include("header.php");
         <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
       </div>
     </div>";
-    } } 
+    } 
+  } 
     ?>
     
 <?php
