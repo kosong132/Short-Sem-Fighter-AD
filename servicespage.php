@@ -106,7 +106,8 @@ include("header.php");
         <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
       </div>
     </div>";
-    } } ?>
+    } } 
+    ?>
     
 <?php
   if (isset($_SESSION['alert_message'])) {
@@ -157,7 +158,7 @@ include("header.php");
         <span  onclick="document.getElementById('id02').style.display='none';" class="close" title="Close Modal"><a href="servicespage.php" style="text-decoration: none;">&times;</a></span>
         <h1>Edit Item</h1>
     </div>
-    
+
     <?php 
     $sql = "SELECT * FROM menu WHERE menu_code = '$menu_code'";
     $res = mysqli_query($conn, $sql);
