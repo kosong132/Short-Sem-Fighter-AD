@@ -2,10 +2,12 @@
 session_start();
 
 // If the user is not logged in send him/her to the login form
-if (isset($_SESSION["InvalidLogin"]) && $_SESSION["InvalidLogin"] === true) {
-    echo '<script>alert("Invalid login");</script>';
-    unset($_SESSION["InvalidLogin"]);
+if(isset($_SESSION["Login"])){
+if ($_SESSION["Login"] == "NO") {
+  echo '<script>window.onload = function() { alert("Invalid login credentials. Please try again."); }</script>'; // Display the alert message
+
 }
+unset($_SESSION["Login"]);}
 
 ?>
 <!DOCTYPE html>

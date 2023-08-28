@@ -16,30 +16,11 @@ unset($_SESSION["registrationSuccess"]);
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            //Logout button, just for testing purpose, can delete after that
             const logoutBtn = document.getElementById("logoutBtn");
             const logoutModal = document.getElementById("logoutModal");
             const closeModal = document.getElementById("closeModal");
             const confirmLogout = document.getElementById("confirmLogout");
-
-            //Validate Confirm password
-            const passwordField = document.getElementById("password");
-            const confirmPasswordField = document.getElementById("confirmPassword");
-            const confirmPasswordError = document.getElementById("confirmPasswordError");
-
-            function validateConfirmPassword() {
-                if (passwordField.value !== confirmPasswordField.value) {
-                    confirmPasswordError.textContent = "Passwords do not match.";
-                    confirmPasswordField.setCustomValidity("Passwords do not match.");
-                    confirmPasswordError.style.display = "block";
-                } else {
-                    confirmPasswordError.textContent = "";
-                    confirmPasswordField.setCustomValidity("");
-                    confirmPasswordError.style.display = "none";
-                }
-            }
-
-            passwordField.addEventListener("input", validateConfirmPassword);
-            confirmPasswordField.addEventListener("input", validateConfirmPassword);
 
             logoutBtn.addEventListener("click", function() {
                 logoutModal.style.display = "block";
@@ -54,6 +35,38 @@ unset($_SESSION["registrationSuccess"]);
                 // For example, redirect to logout page or execute logout API
                  window.location.href = "mainpage.php";
             });
+
+            //Validate Confirm password and password length
+            const passwordField = document.getElementById("password");
+            const confirmPasswordField = document.getElementById("confirmPassword");
+            const confirmPasswordError = document.getElementById("confirmPasswordError");
+            const passwordLengthError = document.getElementById("passwordLengthError");
+
+            function validatePasswordLength() {
+                if (passwordField.value.length < 6) {
+                    passwordLengthError.textContent = "Password must be at least 6 character.";
+                    passwordField.setCustomValidity("Password must be at least 6 character.");
+                } else {
+                    passwordLengthError.textContent = "";
+                    passwordField.setCustomValidity("");
+                }
+            }
+
+            function validateConfirmPassword() {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    confirmPasswordError.textContent = "Passwords do not match.";
+                    confirmPasswordField.setCustomValidity("Passwords do not match.");
+                    confirmPasswordError.style.display = "block";
+                } else {
+                    confirmPasswordError.textContent = "";
+                    confirmPasswordField.setCustomValidity("");
+                    confirmPasswordError.style.display = "none";
+                }
+            }
+
+            passwordField.addEventListener("input", validatePasswordLength);
+            passwordField.addEventListener("input", validateConfirmPassword);
+            confirmPasswordField.addEventListener("input", validateConfirmPassword);
 
             <?php
             if ($registrationSuccess) {
@@ -129,11 +142,12 @@ unset($_SESSION["registrationSuccess"]);
             <div class="form-group">
                 <label for="password">Password:</label>
                 <input type="password" name="password" id="password" placeholder="Enter your Password" required>
+                <div id="passwordLengthError" class="error-dialog"></div>
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password:</label>
                 <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your Password" required>
-                <div id="confirmPasswordError" class="error-dialog"></p>
+                <div id="confirmPasswordError" class="error-dialog"></div>
             </div>
             <div class="form-group">
                 <label for="email">Email Address:</label>
