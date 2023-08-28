@@ -20,9 +20,9 @@ if ($_SESSION['LEVEL']==2||$_SESSION['LEVEL']==0){
 }
 
 if(!isset($_SESSION['COUNTER'])){
-    $createOrder = "insert into orders (user_id) VALUES ('{$_SESSION['ID']}');";
+    $createOrder = "INSERT INTO Orders (user_id) VALUES ('{$_SESSION['ID']}');";
     mysqli_query($conn,$createOrder);
-    $findOrderID = "SELECT * FROM orders WHERE user_id = '{$_SESSION['ID']}'";
+    $findOrderID = "SELECT * FROM Orders WHERE user_id = '{$_SESSION['ID']}'";
     $orderID = mysqli_query($conn,$findOrderID);
     if (mysqli_num_rows($orderID) > 0) {
     while($order_ID = mysqli_fetch_assoc($orderID)){
@@ -34,7 +34,7 @@ if(!isset($_SESSION['COUNTER'])){
 
 <html lang="en">   
 <head>
-   <title>Customer Order Page</title>
+   <title>Menu Page</title>
    <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
    <?php if($_SESSION['LEVEL']==1):?>
    <link rel='stylesheet' href='css/y-css/serviceSeller.css'/>
@@ -49,8 +49,6 @@ if(!isset($_SESSION['COUNTER'])){
         background-size: cover;        
         background-repeat: no-repeat;
         background-attachment: fixed;   /* Keeps the background image fixed while scrolling */
-        
-
     }</style>
   </head>
 
@@ -85,33 +83,40 @@ include("header.php");
         $sql = "SELECT * FROM menu ORDER BY menu_code";
         $res = mysqli_query($conn, $sql);
     }
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) { 
-            echo "
-            <div class='food'>
-            <div class='thumb'>";?>
+    if (mysqli_num_rows($res) > 0) {
+      while ($row = mysqli_fetch_assoc($res)) { 
+      echo "<div class='food'>
+            <div class='thumb'>";
+?>
 
-            <img class="image" src="img/menuimages/<?=$row['menu_img']?>">
+    <img class="image" src="img/menuimages/<?=$row['menu_img']?>">
             
-    <?php echo "</div><div class='details'>
-    <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
-    <div class='engName'> $row[menu_description] </div>
-    <div class='price'> RM$row[menu_price] </div>
-    <div class='edit allbutton'>
-    <form method='get' action='servicespage.php'>
-      <input name='menucode' type='hidden' value='$row[menu_code]'/>
-      <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
-    </form></div>
-    <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
-  </div></div>";
+    <?php 
+      echo "</div>
+        <div class='details'>
+        <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
+        <div class='engName'> $row[menu_description] </div>
+        <div class='price'> RM$row[menu_price] </div>
+        <div class='edit allbutton'>
+          <form method='get' action='servicespage.php'>
+            <input name='menucode' type='hidden' value='$row[menu_code]'/>
+            <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
+          </form>
+        </div>
+        <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
+      </div>
+    </div>";
     } } ?>
     
 <?php
-if (isset($_SESSION['alert_message'])) {
-  $em = $_SESSION['alert_message'];
-  unset($_SESSION['alert_message']); // Clear the session variable
-  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; // Display the alert message
-}?>
+  if (isset($_SESSION['alert_message'])) {
+    $em = $_SESSION['alert_message'];
+    // Clear the session variable
+    unset($_SESSION['alert_message']); 
+    // Display the alert message
+    echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
+  }
+?>
 <button id="plusButton" class="allbutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> + </button>
 
 <div id="id01" class="modal">
@@ -122,9 +127,6 @@ if (isset($_SESSION['alert_message'])) {
     </div>
 
     <div class="input-container">
-      <label for="foodCname"><b>Food's Image: </b></label>
-      <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
-
       <label for="foodID"><b>Food's ID</b></label>
       <input type="text" class="foodids" name="menucode" placeholder="" id="foodid" required>
 
@@ -137,22 +139,25 @@ if (isset($_SESSION['alert_message'])) {
       <label for="foodPrice"><b>Food Price</b></label>
       <input type="text" class="foodPrice" name="menuprice" placeholder="" required>
 
-      <!--ltr need to change to submit-->
-      <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>
-      <!--<input type="button" id="addButton" value="ADD" >-->
-      
-    </div>
+      <label for="foodCname"><b>Food's Image: </b></label>
+      <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
 
-  </form></div>
-  <?php if(isset($_GET['menucode'])):
-    $menu_code = $_GET["menucode"];
-    unset($_GET["menucode"]);?>
-    <div id="id02" class="modal2" >
-  <form class="modal-content1 animate" action="operation.php" method="post" enctype="multipart/form-data">
-    <div class="imgcontainer">
-      <span  onclick="document.getElementById('id02').style.display='none';" class="close" title="Close Modal"><a href="servicespage.php" style="text-decoration: none;">&times;</a></span>
-      <h1>Edit Item</h1>
+      <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>
+      <!--<input type="button" id="addButton" value="ADD" >--> 
     </div>
+  </form>
+</div>
+  <?php 
+    if(isset($_GET['menucode'])):
+      $menu_code = $_GET["menucode"];
+      unset($_GET["menucode"]);?>
+      <div id="id02" class="modal2" >
+    <form class="modal-content1 animate" action="operation.php" method="post" enctype="multipart/form-data">
+      <div class="imgcontainer">
+        <span  onclick="document.getElementById('id02').style.display='none';" class="close" title="Close Modal"><a href="servicespage.php" style="text-decoration: none;">&times;</a></span>
+        <h1>Edit Item</h1>
+    </div>
+    
     <?php 
     $sql = "SELECT * FROM menu WHERE menu_code = '$menu_code'";
     $res = mysqli_query($conn, $sql);

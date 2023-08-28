@@ -28,6 +28,10 @@
     padding-top: 8rem; /*container up padding*/
     padding-bottom: 8rem; /*container up padding*/
 }
+
+    .food{
+        background-color: #FFFFFF;
+    }
 </style>
 
 </head>
