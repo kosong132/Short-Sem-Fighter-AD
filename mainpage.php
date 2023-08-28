@@ -14,7 +14,7 @@ if (!isset($_COOKIE['visitor_count'])) {
     <head>
         <title>Jojoe Food</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
-        <link rel="stylesheet" href="css/d-css/mainPage.css">
+        <link rel="stylesheet" href="mainPage.css">
     </head>
 
     <div class='menu-container'>
@@ -39,7 +39,7 @@ if (!isset($_COOKIE['visitor_count'])) {
                         <h1>Tepi Sungai UTM</h1><br><br>
                         <p>a food ordering system</p>
                         <p>for all UTMians</p><br><br>
-                        <button class="btn signUpNow" onclick="location.href='signup.php'">SIGN UP NOW</a></button>
+                        <button class="btn signUpNow" onclick="location.href='register.php'">SIGN UP NOW</a></button>
                     </div>
                     <div class="two">
                         <img src="img/image/platefood.png" class="image1">
