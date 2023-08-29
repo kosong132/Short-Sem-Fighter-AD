@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "kk";
-$password = "jingjie02";
+$username = "root";
+$password = "";
 $database = "tepi_sungai";
 
 // Create a connection
