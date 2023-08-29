@@ -6,7 +6,7 @@
     }
 
     //Select database
-    mysqli_select_db($conn, "foodorder");
+    mysqli_select_db($conn, "updatedfoodorder");
 
     //Create table
     $user = "CREATE TABLE Users(
@@ -45,8 +45,8 @@
         menu_code VARCHAR(10) NOT NULL,
         order_quantity INT(4) NOT NULL,
         order_price FLOAT(8) NOT NULL,
-        CONSTRAINT order_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-        CONSTRAINT od_fk FOREIGN KEY (menu_code) REFERENCES Menu(menu_code))";
+        CONSTRAINT order_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+        CONSTRAINT od_fk FOREIGN KEY (menu_code) REFERENCES Menu(menu_code) ON DELETE CASCADE)";
 
 
 

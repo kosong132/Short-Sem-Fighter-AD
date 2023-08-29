@@ -62,99 +62,103 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 10px;
     }
 
-/* Add spacing between food items */
-.food {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  background-color: white;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
+    /* Add spacing between food items */
+    .food {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: white;
+      transition: transform 0.2s;
+      cursor: pointer;
+      background-color: #596988;
+    }
 
-.food:hover {
-  transform: translateY(-5px);
-}
+    .food:hover {
+      transform: translateY(-5px);
+    }
 
-/* Food image */
-.food .image {
-  max-width: 100px;
-  height: auto;
-  border-radius: 10px;
-}
+    /* Food image */
+    .food .image {
+      max-width: 100px;
+      height: auto;
+      border-radius: 10px;
+    }
 
-/* Food details */
-.food .details {
-  flex: 1;
-}
+    /* Food details */
+    .food .details {
+      flex: 1;
+    }
 
-/* Food code and name */
-.food .foodIDs {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
+    /* Food code and name */
+    .food .foodIDs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
 
-/* Food description */
-.food .engName {
-  margin-top: 5px;
-  color: #555;
-}
+    /* Food description */
+    .food .engName {
+      margin-top: 5px;
+      font-weight: bold;
+    }
 
-/* Food price */
-.food .price {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  color: #f39c12;
-}
+    /* Food price */
+    .food .price {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #f39c12;
+    }
 
-/* Edit and delete buttons */
-.food .buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    /* Edit and delete buttons */
+    .food .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* Edit button */
-.food .editButton {
-  background-color: #3498db;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    /* Edit button */
+    .food .editButton {
+      background-color: #3498db;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-.food .editButton:hover {
-  background-color: #2980b9;
-}
+    .food .editButton:hover {
+      background-color: #2980b9;
+    }
 
-/* Delete button */
-.food .deleteButton {
-  background-color: #e74c3c;
-  color: white;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    /* Delete button */
+    .food .deleteButton {
+      background-color: #e74c3c;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-.food .deleteButton:hover {
-  background-color: #c0392b;
-}
+    .food .deleteButton:hover {
+      background-color: #c0392b;
+    }
 
 
-/* The middle of the food items */
-  .grid-container2 {
-    background-color: transparent ;
-  }
+    /* The middle of the food items */
+      .grid-container2 {
+        background-color: transparent ;
+        
+      }
+
 
 
   </style>
@@ -213,8 +217,8 @@ include("header.php");
                   echo "</div>
                   <div class='details'>
                   <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
-                  <div class='engName'> $row[menu_description] </div>
-                  <div class='price'> RM$row[menu_price] </div>
+                  <div class='engName'> Description: $row[menu_description] </div>
+                  <div class='price'> Price: RM$row[menu_price] </div>
                   
                   <div class='edit allbutton'>
                     <form method='get' action='servicespage.php'>

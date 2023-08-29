@@ -8,27 +8,31 @@
 
     if (isset($_GET["pass"])) {
         $menu_code = $_GET["pass"];
-        $order_id = $_SESSION['COUNTER'];
+        //$order_id = $_SESSION['COUNTER'];
 
         //Q2: delete guest according to id using DELETE FROM
         if($_SESSION['LEVEL']==1){
-            $sql = "DELETE FROM Menu WHERE menu_code = '$pass'";
+            $sql = "DELETE FROM Menu WHERE menu_code = '$menu_code'";
             unset($_GET["pass"]);
-
-        if(mysqli_query($conn, $sql)){}
-
-        else{
-            $em = "Error: " . mysqli_connect_error($conn);
-            $_SESSION['alert_message'] = $em;   
+            mysqli_query($conn, $sql);
+            header("Location: servicespage.php");
         }
-
-        header("Location: servicespage.php");}
         else if ($_SESSION['LEVEL'] == 2 || $_SESSION['LEVEL'] == 0) {
             $delete_query = "DELETE FROM Orderdetails WHERE order_id = '$order_id' AND menu_code = '$menu_code'";
             mysqli_query($conn,$delete_query);
             header("Location: cart.php");
         }
-
+        //if(mysqli_query($conn, $sql)){}
+        else{
+            $em = "Error: " . mysqli_connect_error($conn);
+            $_SESSION['alert_message'] = $em;   
+        }
+        /*header("Location: servicespage.php");}
+        else if ($_SESSION['LEVEL'] == 2 || $_SESSION['LEVEL'] == 0) {
+            $delete_query = "DELETE FROM Orderdetails WHERE order_id = '$order_id' AND menu_code = '$menu_code'";
+            mysqli_query($conn,$delete_query);
+            header("Location: cart.php");
+        }*/
         mysqli_close($conn);
     }
 
