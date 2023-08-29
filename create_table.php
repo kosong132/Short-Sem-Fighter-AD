@@ -14,19 +14,19 @@ if ($conn->connect_error) {
 
 // SQL command to create the users table
 $sql = "CREATE TABLE Users (
-    user_id VARCHAR(20) NOT NULL UNIQUE,
-    user_name VARCHAR(50) NOT NULL,
-    user_password VARCHAR(255) NOT NULL,
-    user_level INT(3) NOT NULL,
-    user_email VARCHAR(100) NOT NULL,
-    user_phone VARCHAR(15) NOT NULL,
+    userID VARCHAR(20) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    userLevel INT(3) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
     order_counter INT(10),
-    CONSTRAINT user_pk PRIMARY KEY(user_id))";
+    CONSTRAINT user_pk PRIMARY KEY(userID))";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Table users created successfully";
+if (mysqli_query($conn, $orderdetail)) {
+    echo "Table Orderdetails created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table: " . mysqli_connect_error($conn);
 }
 
 $menu = "CREATE TABLE Menu(

@@ -154,6 +154,10 @@ unset($_SESSION["registrationSuccess"]);
                 <input type="email" name="email" id="email" placeholder="Enter your Email Address" oninput="validateEmail(this)" required>
             </div>
             <div class="form-group">
+                <label for="address">Residential Address:</label>
+                <input type="text" name="address" id="address" placeholder="Enter your Address" required>
+            </div>
+            <div class="form-group">
                 <label for="phone">Phone Number:</label>
                 <input type="tel" name="phone" id="phone" placeholder="Enter your Phone Number" onkeypress="return isNumberKey(event)" required>
             </div>
