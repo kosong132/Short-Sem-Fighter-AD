@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-size: 1550px 900px;
+    background-size: 1550px 1000px;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -41,7 +41,7 @@ body {
 .register-container {
     background-color: #59698823;
     width: 420px;
-    height: 550px;
+    height: 650px;
     padding: 20px;
     border-radius: 10px;
     margin: auto;

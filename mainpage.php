@@ -12,7 +12,7 @@ if (!isset($_COOKIE['visitor_count'])) {
 ?>
 <html>
     <head>
-        <title>Tepi Sungai UTM</title>
+        <title>Jojoe Food</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
         <link rel="stylesheet" href="mainPage.css">
     </head>
