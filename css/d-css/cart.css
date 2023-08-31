@@ -147,6 +147,8 @@
     align-items: center;
     /*margin-right: 0.5rem;*/ /* Add spacing here */
     font-weight: bold;
+    color:#FFFFFF;
+
 }
 
 /* Styling for the Chinese food name */
@@ -155,6 +157,8 @@
     grid-row: 1 / 2;
     padding-top: 1.5rem;
     font-weight: bold;
+    color:#FFFFFF;
+
 }
 
 /* Styling for the English food name */
@@ -162,7 +166,7 @@
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding-bottom: 1.5rem;
-    color: #777;
+   color:#FFFFFF;
 }
 
 /* Styling for the food price */
@@ -173,6 +177,7 @@
     display: flex;
     align-items: center;
     padding-left: 0.8rem;
+    color:#FFFFFF;
 }
 
 .foodImage {

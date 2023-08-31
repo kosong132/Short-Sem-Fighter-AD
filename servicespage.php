@@ -20,7 +20,7 @@ if ($_SESSION['LEVEL']==2||$_SESSION['LEVEL']==0){
 }
 
 if(!isset($_SESSION['COUNTER'])){
-      $createOrder = "insert into orders (user_id) VALUES ('{$_SESSION['ID']}');";
+      $createOrder = "INSERT INTO Orders (user_id) VALUES ('{$_SESSION['ID']}');";
       mysqli_query($conn,$createOrder);
       $findOrderID = "SELECT * FROM orders WHERE user_id = '{$_SESSION['ID']}'";
       $orderID = mysqli_query($conn,$findOrderID);
@@ -56,7 +56,7 @@ if(!isset($_SESSION['COUNTER'])){
     .body-container {
       max-width: 1200px;
       margin:auto;
-      padding: 20px;
+      /*padding: 20px;*/
       background-color: rgba(255, 255, 255, 0.9);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
@@ -83,7 +83,8 @@ if(!isset($_SESSION['COUNTER'])){
     /* Food image */
     .food .image {
       max-width: 100px;
-      height: auto;
+      height: 120px;
+      width: 120px;
       border-radius: 10px;
     }
 
@@ -93,11 +94,11 @@ if(!isset($_SESSION['COUNTER'])){
     }
 
     /* Food code and name */
-    .food .foodIDs {
+    .food .foodId {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 1.8rem;
+      font-size: 1.3rem;
       font-weight: bold;
       color: #FFFFFF;
     }
@@ -106,6 +107,7 @@ if(!isset($_SESSION['COUNTER'])){
     .food .engName {
       margin-top: 5px;
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
     /* Food price */
@@ -120,6 +122,8 @@ if(!isset($_SESSION['COUNTER'])){
       display: flex;
       justify-content: space-between;
       align-items: center;
+      
+      
     }
 
     /* Edit button */
@@ -131,13 +135,15 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+      
     }
 
-    .food .editButton:hover {
+    
+    .food .edit:hover {
       background-color: #2980b9;
     }
 
-    /* Delete button */
+    /* Delete button 
     .food .deleteButton {
       background-color: #e74c3c;
       color: white;
@@ -146,12 +152,12 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
-    }
+    }*/
 
-    .food .deleteButton:hover {
+    .food .delete:hover {
       background-color: #c0392b;
+      transform: translateY(-5px);
     }
-
 
     /* The middle of the food items */
       .grid-container2 {
@@ -159,6 +165,49 @@ if(!isset($_SESSION['COUNTER'])){
         
       }
 
+      .categories {
+        display: flex;
+        justify-content: center;
+        background-color: #f5f5f5;
+        padding: 10px 0;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+      .categories a {
+        text-decoration: none;
+        color: #333;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 0 5px;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .categories a:hover {
+        background-color: #e0e0e0;
+        transform: translateY(-5px);
+      }
+
+    /* Active category link */
+      .categories a.active {
+        background-color: #333;
+        color: #ffffff;
+      } 
+
+    /* Responsive styles (Can be deleted)*/
+    @media screen and (max-width: 768px) {
+        .categories {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .categories a {
+            margin: 5px 0;
+        }
+    }
+
+      
 
 
   </style>
@@ -177,7 +226,7 @@ function deleteMenu(menuCode) {
 <body id="service">
 
 <?php 
-include("header.php");
+  include("header.php");
 ?>
 
 <?php if($_SESSION['LEVEL']==1):?>
@@ -185,7 +234,7 @@ include("header.php");
   <div class="edit-container">
     <div class="grid-container">
       <div class="editMenu">
-        <h2><u>EDIT MENU</u></h2>
+        <h2><u>MENU</u></h2>
       </div>
 
       <div class="date">
@@ -194,17 +243,35 @@ include("header.php");
       </div>
     </div>
 
+    <div class="categories">
+      <a href="servicespage.php">All</a>
+      <a href="servicespage.php?category=rice">Rice</a>
+      <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=beverage">Beverages</a>
+      <!-- Add more category tabs here -->
+    </div>
+
+      <!-- Display Menu Items -->
     <div class="grid-container2" id="grid-container2">
-      <!--place to insert food-->
-      <?php 
-          if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $sort = $_POST['sort'];
-            $sql = "SELECT * FROM Menu ORDER BY $sort";
-            $res = mysqli_query($conn, $sql);
-          }else{
-            $sql = "SELECT * FROM Menu ORDER BY menu_code";
-            $res = mysqli_query($conn, $sql);
+      <?php
+      // Modify your SQL query based on selected category
+      $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // Your existing SQL query modification based on sortingAC
+          $sort = $_POST['sort'];
+          $categoryFilter = $_POST['category'];
+      } else {
+          // Modify your SQL query to include category filter
+          if ($categoryFilter !== '') {
+              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+          } else {
+              $sql = "SELECT * FROM Menu ORDER BY menu_code";
           }
+          $res = mysqli_query($conn, $sql);
+      }
+
+
 
           if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) { 
@@ -270,12 +337,24 @@ include("header.php");
         
       <label for="foodPrice"><b>Food Price</b></label>
       <input type="text" class="foodPrice" name="menuprice" placeholder="" required>
+
+      <label for="category"><b>Category</b></label>
+      <select name="category" required>
+          <option value="all">All</option>
+          <option value="rice">Rice</option>
+          <option value="mee">Mee</option>
+          <option value="beverage">Beverage</option>
+          <!-- Add more options for other categories -->
+      </select>
+      
       <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>  
     </div>
   </form>
 </div>
 
+
 <?php 
+  
   if(isset($_GET['menucode'])):
     $menu_code = $_GET["menucode"];
     unset($_GET["menucode"]);
@@ -296,7 +375,8 @@ include("header.php");
         $menu_code = $row["menu_code"];
         $menu_name = $row["menu_name"];
         $menu_price = $row["menu_price"];
-        $menu_description = $row["menu_description"]; 
+        $menu_description = $row["menu_description"];
+        $category = $row["category"]; 
       } 
     } 
   ?>
@@ -312,6 +392,14 @@ include("header.php");
         
     <label for="foodPrice"><b>Food Price</b></label>
     <input type="text" class="foodPrice" name="menuprice" value="<?php echo $menu_price; ?>">
+
+    <label for="category"><b>Category</b></label>
+    <select name="category" required>
+        <option value="rice" <?php if ($category == 'rice') echo 'selected'; ?>>Rice</option>
+        <option value="mee" <?php if ($category == 'mee') echo 'selected'; ?>>Mee</option>
+        <option value="beverage" <?php if ($category == 'beverage') echo 'selected'; ?>>Beverage</option>
+        <!-- Add more options for other categories -->
+    </select>
 
     <label for="foodCname"><b>Food's Image: </b></label>
     <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" class="menuimg"><br><br>
@@ -386,7 +474,7 @@ include("header.php");
         <?php 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sort = $_POST['sort'];
-        $sql = "SELECT * FROM menu ORDER BY $sort";
+        $sql = "SELECT * FROM Menu ORDER BY $sort";
         $res = mysqli_query($conn, $sql);
     }
     else{
@@ -415,6 +503,7 @@ include("header.php");
         <input type='number' name='quantity' class='quantity' value='0' min='1'/>
         </div>
         <div class='addfunction'>
+        
         <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
         </div></div>
         

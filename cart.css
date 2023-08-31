@@ -1,4 +1,4 @@
-/* Reset default margin and padding */
+Reset default margin and padding
 * {
     margin: 0;
     padding: 0;
@@ -162,7 +162,7 @@
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     padding-bottom: 1.5rem;
-    color: #777;
+    color: #FFFFFF;
 }
 
 /* Styling for the food price */

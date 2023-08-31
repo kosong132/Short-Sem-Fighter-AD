@@ -5,7 +5,7 @@ if(!$conn){
     die("Could not connect: " . mysqli_connect_error());
 }
 
-if(mysqli_query($conn,"CREATE DATABASE updatedfoodorder")){
+if(mysqli_query($conn,"CREATE DATABASE updatedcategoryfoodorder")){
     echo "Database created";
 }else{
     echo "Error creating database: " . mysqli_connect_error();

@@ -10,7 +10,7 @@
             }
 
             //Select database
-            mysqli_select_db($conn, "updatedfoodorder");
+            mysqli_select_db($conn, "updatedcategoryfoodorder");
 
             //Insert data to table
             mysqli_query($conn, "INSERT INTO Users(user_id, user_password, user_level , user_name) VALUES ('kengkeat','pass1',1,'Ng Keng Keat')");

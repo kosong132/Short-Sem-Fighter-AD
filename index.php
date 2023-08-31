@@ -10,17 +10,17 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-if (!mysqli_select_db($conn, 'updatedfoodorder')){
-$sql = "CREATE DATABASE updatedfoodorder";
+if (!mysqli_select_db($conn, 'updatedcategoryfoodorder')){
+$sql = "CREATE DATABASE updatedcategoryfoodorder";
 if (mysqli_query($conn, $sql)) {
-  echo "Database updatedfoodorder created successfully";
+  echo "Database updatedcategoryfoodorder created successfully";
 } else {
   echo "Error creating database: " . mysqli_error($conn);
   header("Location: mainpage.php");
 }
 
 
-mysqli_select_db($conn, "updatedfoodorder");
+mysqli_select_db($conn, "updatedcategoryfoodorder");
 
 $user = "CREATE TABLE user(
     user_id VARCHAR(10) NOT NULL,

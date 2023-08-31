@@ -6,7 +6,7 @@
     }
 
     //Select database
-    mysqli_select_db($conn, "updatedfoodorder");
+    mysqli_select_db($conn, "updatedcategoryfoodorder");
 
     //Create table
     $user = "CREATE TABLE Users(
@@ -27,6 +27,7 @@
         menu_name VARCHAR(30) NOT NULL,
         menu_price FLOAT(8) NOT NULL,
         menu_description VARCHAR(200) NOT NULL,
+        category VARCHAR(20) NOT NULL,
         CONSTRAINT menu_pk PRIMARY KEY(menu_code))";
 
     $order = "CREATE TABLE Orders(
