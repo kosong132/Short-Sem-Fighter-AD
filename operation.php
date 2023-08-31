@@ -8,7 +8,7 @@
 
     if (isset($_GET["pass"])) {
         $menu_code = $_GET["pass"];
-        //$order_id = $_SESSION['COUNTER'];
+        $order_id = $_SESSION['COUNTER'];
 
         //Q2: delete guest according to id using DELETE FROM
         if($_SESSION['LEVEL']==1){
@@ -31,6 +31,7 @@
     }
 
     if (isset($_POST["menucode"])) {
+        $menu_code = $_POST["menucode"];
         $menu_code = $_POST["menucode"];
         $menu_name = $_POST["menuname"];
         $menu_price = $_POST["menuprice"];
@@ -61,7 +62,7 @@
                 if (mysqli_query($conn, $sql)) {
                     $_SESSION['alert_message'] = "Menu item updated successfully.";
                 } else {
-                    $em = "Error updating record: " . mysqli_error($conn);
+                    $em = "Error updating record: " . mysqli_connect_error($conn);
                     $_SESSION['alert_message'] = $em;
                 }
             } else {
