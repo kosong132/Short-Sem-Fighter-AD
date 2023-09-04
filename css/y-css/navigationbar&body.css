@@ -1,0 +1,312 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.menu-container {
+  background-color: #596988;
+  padding: 0 40px;
+  width: 100%;
+  height: 80px;
+  position: fixed;  
+  display: flex;
+  justify-content: center;
+}
+  
+.menu {
+  width: 100%; /*must use % to auto resize*/
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left_menu{
+  display: flex;
+  align-items: center;
+  width:800px;
+}
+
+.logo {
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  color: #596988;
+}
+
+.header1 {
+  display: flex;
+  justify-content: space-evenly;
+  height: 80px;
+  width: 680px;
+  margin-left: 10px;
+}
+
+.header {
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+  text-align:center;
+}
+
+.header a{
+  font-size: 20px;
+align-items: center;
+text-decoration: none;
+color:white;
+border-radius: 23px;
+padding: 0px 30px;
+transition: ease 0.3s;
+}
+
+.header a:hover, 
+.header a:active {
+  text-decoration: underline;
+  font-size: 23px;
+  background-color: rgb(232, 232, 232);
+  color: #000;
+}
+
+.headermain a{
+  margin-left: 80px;
+  font-size: 20px;
+  align-items: center;
+  text-decoration: none;
+  color:white;
+  border-radius: 23px;
+  padding: 0px 30px;
+  transition: ease 0.3s;
+}
+
+.headermain a:hover, 
+.headermain a:active {
+  text-decoration: underline;
+  font-size: 23px;
+  background-color: rgb(232, 232, 232);
+  color: #596988;
+}
+
+.login {
+  background-color: #596988;
+  display: flex;
+  text-decoration: none;
+  text-align: center;
+  color: #596988;
+}
+
+.login .logout{
+  display: flex;
+  align-items: center;
+  background-color:#596988;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.login a {
+  display: flex;
+  align-items: center;
+  background-color:#596988;
+  color: white;
+  padding: 14px 20px;
+  margin: 25px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  border-radius: 23px;
+  transition: ease 0.3s;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  background-color:#596988;
+  color: white;
+  padding: 14px 20px;
+  margin: 25px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  text-decoration: none;
+  border-radius: 23px;
+  transition: ease 0.3s;
+}
+
+.login a:hover, 
+.login a:active,
+.logout:hover, 
+.logout:active  {
+  text-decoration: underline;
+  font-size: 23px;
+  background-color: rgb(232, 232, 232);
+  color: #596988;
+}
+
+.body-container {
+    max-width: 900px;
+    background: rgba(255, 255, 255, 0.6);
+
+    margin: auto;
+    display: flex; /*cart affected no food items*/
+    /*box-shadow: 25px 55px 75px black; 3D shadow*/
+    justify-content: space-around;
+    padding-top: 8rem; /*container up padding*/
+    padding-bottom: 8rem; /*container up padding*/
+}
+
+.position {
+  text-align: center;
+  margin: 50px 0;
+
+}
+
+.position a{
+  color:#596988;
+}
+
+
+/*=========================================================================*/
+.logoutButton {
+  display: grid;
+  grid-template-columns: 3fr 0.5fr 3fr;
+  }
+
+#logoutButton {
+  background-color:#ddd8d8;
+  padding: 10px;
+  grid-column: 1 / 2;
+  background-color: rgb(199, 199, 199);
+  color: #596988;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+#cancelButton {
+  grid-column: 3 / 4;
+  background-color: #f44336;
+  font-size: 20px;
+  color:#596988;
+  padding: 14px 20px;
+  margin: 8px 0;
+  margin-right: 15px;
+  border: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+#cancelButton:hover {
+
+  background-color: #ff7b71;
+  cursor: pointer;
+}
+
+.logoutText{
+	text-align: center;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+}
+
+#logoutButton:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.logoutContainer {
+  padding: 12px;
+  padding-bottom: 1.5rem;
+  padding-top: 2.3rem;
+  text-align: center;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 1rem;
+  top: -1rem;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
