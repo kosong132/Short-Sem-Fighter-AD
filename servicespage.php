@@ -20,21 +20,21 @@ if ($_SESSION['LEVEL']==2||$_SESSION['LEVEL']==0){
 }
 
 if(!isset($_SESSION['COUNTER'])){
-    $createOrder = "insert into orders (user_id) VALUES ('{$_SESSION['ID']}');";
-    mysqli_query($conn,$createOrder);
-    $findOrderID = "SELECT * FROM orders WHERE user_id = '{$_SESSION['ID']}'";
-    $orderID = mysqli_query($conn,$findOrderID);
-    if (mysqli_num_rows($orderID) > 0) {
-    while($order_ID = mysqli_fetch_assoc($orderID)){
-    $_SESSION['COUNTER'] = $order_ID['order_id'];
-    }}
-}
+      $createOrder = "INSERT INTO Orders (user_id) VALUES ('{$_SESSION['ID']}');";
+      mysqli_query($conn,$createOrder);
+      $findOrderID = "SELECT * FROM orders WHERE user_id = '{$_SESSION['ID']}'";
+      $orderID = mysqli_query($conn,$findOrderID);
+      if (mysqli_num_rows($orderID) > 0) {
+      while($order_ID = mysqli_fetch_assoc($orderID)){
+      $_SESSION['COUNTER'] = $order_ID['order_id'];
+      }}
+  }
 }
 ?>
 
 <html lang="en">   
 <head>
-   <title>Customer Order Page</title>
+   <title>Menu Page</title>
    <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
    <?php if($_SESSION['LEVEL']==1):?>
    <link rel='stylesheet' href='css/y-css/serviceSeller.css'/>
@@ -42,22 +42,191 @@ if(!isset($_SESSION['COUNTER'])){
    <?php if($_SESSION['LEVEL']==2||$_SESSION['LEVEL']==0):?>
    <link rel='stylesheet' href='css/y-css/serviceCustomer.css'/>
    <?php endif;?>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--windows size responsive-->
-  <style>
-  body {
-        background-image: url('img/backgroundImage/Cart_background.jpg');
-        background-size: cover;        
-        background-repeat: no-repeat;
-        background-attachment: fixed;   /* Keeps the background image fixed while scrolling */
-        
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    }</style>
+  <style>
+    body {
+      background-image: url('img/backgroundImage/Cart_background.jpg');
+      background-size: cover;        
+      background-repeat: no-repeat;
+      background-attachment: fixed;      
+    }
+    
+    /* Body container */
+    .body-container {
+      max-width: 1200px;
+      margin:auto;
+      /*padding: 20px;*/
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    /* Add spacing between food items */
+    .food {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: white;
+      transition: transform 0.2s;
+      cursor: pointer;
+      background-color: #596988;
+    }
+
+    .food:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Food image */
+    .food .image {
+      max-width: 100px;
+      height: 120px;
+      width: 120px;
+      border-radius: 10px;
+    }
+
+    /* Food details */
+    .food .details {
+      flex: 1;
+    }
+
+    /* Food code and name */
+    .food .foodId {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #FFFFFF;
+    }
+
+    /* Food description */
+    .food .engName {
+      margin-top: 5px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* Food price */
+    .food .price {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #f39c12;
+    }
+
+    /* Edit and delete buttons */
+    .food .buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      
+    }
+
+    /* Edit button */
+    .food .editButton {
+      background-color: #3498db;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      
+    }
+
+    
+    .food .edit:hover {
+      background-color: #2980b9;
+    }
+
+    /* Delete button 
+    .food .deleteButton {
+      background-color: #e74c3c;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }*/
+
+    .food .delete:hover {
+      background-color: #c0392b;
+      transform: translateY(-5px);
+    }
+
+    /* The middle of the food items */
+      .grid-container2 {
+        background-color: transparent ;
+        
+      }
+
+      .categories {
+        display: flex;
+        justify-content: center;
+        background-color: #f5f5f5;
+        padding: 10px 0;
+        border-radius: 20px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+      .categories a {
+        text-decoration: none;
+        color: #333;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 0 5px;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .categories a:hover {
+        background-color: #e0e0e0;
+        transform: translateY(-5px);
+      }
+
+    /* Active category link */
+      .categories a.active {
+        background-color: #333;
+        color: #ffffff;
+      } 
+
+    /* Responsive styles (Can be deleted)*/
+    @media screen and (max-width: 768px) {
+        .categories {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .categories a {
+            margin: 5px 0;
+        }
+    }
+
+      
+
+
+  </style>
+  <script>
+
+function deleteMenu(menuCode) {
+  if (confirm("Are you sure you want to delete this item?")) {
+    window.location.href = 'operation.php?pass=' + menuCode;
+  }
+}
+</script>
+
+
   </head>
 
 <body id="service">
 
 <?php 
-include("header.php");
+  include("header.php");
 ?>
 
 <?php if($_SESSION['LEVEL']==1):?>
@@ -65,7 +234,7 @@ include("header.php");
   <div class="edit-container">
     <div class="grid-container">
       <div class="editMenu">
-        <h2><u>EDIT MENU</u></h2>
+        <h2><u>MENU</u></h2>
       </div>
 
       <div class="date">
@@ -74,46 +243,76 @@ include("header.php");
       </div>
     </div>
 
+    <div class="categories">
+      <a href="servicespage.php">All</a>
+      <a href="servicespage.php?category=rice">Rice</a>
+      <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=beverage">Beverages</a>
+      <!-- Add more category tabs here -->
+    </div>
+
+      <!-- Display Menu Items -->
     <div class="grid-container2" id="grid-container2">
-<?php 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $sort = $_POST['sort'];
-        $sql = "SELECT * FROM menu ORDER BY $sort";
-        $res = mysqli_query($conn, $sql);
-    }
-    else{
-        $sql = "SELECT * FROM menu ORDER BY menu_code";
-        $res = mysqli_query($conn, $sql);
-    }
-        if (mysqli_num_rows($res) > 0) {
+      <?php
+      // Modify your SQL query based on selected category
+      $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // Your existing SQL query modification based on sortingAC
+          $sort = $_POST['sort'];
+          $categoryFilter = $_POST['category'];
+      } else {
+          // Modify your SQL query to include category filter
+          if ($categoryFilter !== '') {
+              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+          } else {
+              $sql = "SELECT * FROM Menu ORDER BY menu_code";
+          }
+          $res = mysqli_query($conn, $sql);
+      }
+
+
+
+          if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) { 
-            echo "
-            <div class='food'>
-            <div class='thumb'>";?>
+              echo "
+                <div class='food'>
+                  <div class='thumb'>";?>
+                    <img class="image" src="img/menuimages/<?=$row['menu_img']?>">
+                  
+                <?php 
+                  echo "</div>
+                  <div class='details'>
+                  <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
+                  <div class='engName'> Description: $row[menu_description] </div>
+                  <div class='price'> Price: RM$row[menu_price] </div>
+                  
+                  <div class='edit allbutton'>
+                    <form method='get' action='servicespage.php'>
+                      <input name='menucode' type='hidden' value='$row[menu_code]'/>
+                      <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
+                    </form>
+                  </div>
+                  
+                  <button class='delete allbutton' onclick=\"deleteMenu('{$row['menu_code']}')\">Delete</button>
 
-            <img class="image" src="img/menuimages/<?=$row['menu_img']?>">
-            
-    <?php echo "</div><div class='details'>
-    <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
-    <div class='engName'> $row[menu_description] </div>
-    <div class='price'> RM$row[menu_price] </div>
+                  </div>
+                  </div>";
+              } 
+            } 
+          ?>
     
-    <div class='edit allbutton'>
-    <form method='get' action='servicespage.php'>
-      <input name='menucode' type='hidden' value='$row[menu_code]'/>
-      <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
-    </form></div>
 
-    <button class='delete allbutton' onclick=location.href='operation.php?pass=$row[menu_code]'>Delete</button>
-  </div></div>";
-    } } ?>
-    
+
 <?php
-if (isset($_SESSION['alert_message'])) {
-  $em = $_SESSION['alert_message'];
-  unset($_SESSION['alert_message']); // Clear the session variable
-  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; // Display the alert message
-}?>
+  if (isset($_SESSION['alert_message'])) {
+    $em = $_SESSION['alert_message'];
+    // Clear the session variable
+    unset($_SESSION['alert_message']); 
+    // Display the alert message
+    echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
+  }
+?>
 <button id="plusButton" class="allbutton" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"> + </button>
 
 <div id="id01" class="modal">
@@ -139,66 +338,88 @@ if (isset($_SESSION['alert_message'])) {
       <label for="foodPrice"><b>Food Price</b></label>
       <input type="text" class="foodPrice" name="menuprice" placeholder="" required>
 
-      <!--ltr need to change to submit-->
-      <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>
-      <!--<input type="button" id="addButton" value="ADD" >-->
+      <label for="category"><b>Category</b></label>
+      <select name="category" required>
+          <option value="all">All</option>
+          <option value="rice">Rice</option>
+          <option value="mee">Mee</option>
+          <option value="beverage">Beverage</option>
+          <!-- Add more options for other categories -->
+      </select>
       
+      <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>  
     </div>
+  </form>
+</div>
 
-  </form></div>
-  <?php if(isset($_GET['menucode'])):
+
+<?php 
+  
+  if(isset($_GET['menucode'])):
     $menu_code = $_GET["menucode"];
-    unset($_GET["menucode"]);?>
-    <div id="id02" class="modal2" >
+    unset($_GET["menucode"]);
+?>
+
+<div id="id02" class="modal2" >
   <form class="modal-content1 animate" action="operation.php" method="post" enctype="multipart/form-data">
     <div class="imgcontainer">
       <span  onclick="document.getElementById('id02').style.display='none';" class="close" title="Close Modal"><a href="servicespage.php" style="text-decoration: none;">&times;</a></span>
       <h1>Edit Item</h1>
     </div>
-    <?php 
+
+  <?php 
     $sql = "SELECT * FROM menu WHERE menu_code = '$menu_code'";
     $res = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($res) > 0) {
+      while ($row = mysqli_fetch_assoc($res)) { 
+        $menu_code = $row["menu_code"];
+        $menu_name = $row["menu_name"];
+        $menu_price = $row["menu_price"];
+        $menu_description = $row["menu_description"];
+        $category = $row["category"]; 
+      } 
+    } 
+  ?>
+  <div class="input-container">
+    <label for="foodID"><b>Food's ID </b></label>
+    <input type="text" class="foodids" name="menucode" value="<?php echo $menu_code; ?>" type="hidden" readonly>
 
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) { 
-            
-                $menu_code = $row["menu_code"];
-                $menu_name = $row["menu_name"];
-                $menu_price = $row["menu_price"];
-                $menu_description = $row["menu_description"]; 
-    } } 
-    ?>
-    <div class="input-container">
-      
-      <label for="foodCname"><b>Food's Image: </b></label>
-      <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" class="menuimg"><br><br>
+    <label for="foodCname"><b>Food's Name</b></label>
+    <input type="text" class="foodCname" name="menuname" value="<?php echo $menu_name; ?>">
 
-      <label for="foodID"><b>Food's ID </b></label>
-      <input type="text" class="foodids" name="menucode" value="<?php echo $menu_code; ?>" type="hidden" readonly>
-
-      <label for="foodCname"><b>Food's Name</b></label>
-      <input type="text" class="foodCname" name="menuname" value="<?php echo $menu_name; ?>">
-
-      <label for="foodEngName"><b>Food's Description</b></label>
-      <input type="text" class="foodEngName" name="menudesc" value="<?php echo $menu_description; ?>" maxlength="25">
+    <label for="foodEngName"><b>Food's Description</b></label>
+    <input type="text" class="foodEngName" name="menudesc" value="<?php echo $menu_description; ?>" maxlength="25">
         
-      <label for="foodPrice"><b>Food Price</b></label>
-      <input type="text" class="foodPrice" name="menuprice" value="<?php echo $menu_price; ?>">
+    <label for="foodPrice"><b>Food Price</b></label>
+    <input type="text" class="foodPrice" name="menuprice" value="<?php echo $menu_price; ?>">
 
-      <!--ltr need to change to submit-->
-      <button type="submit" name="upload" class="allbutton" id="addButton">Edit</button>
-      <!--<input type="button" id="addButton" value="ADD" >-->
+    <label for="category"><b>Category</b></label>
+    <select name="category" required>
+        <option value="rice" <?php if ($category == 'rice') echo 'selected'; ?>>Rice</option>
+        <option value="mee" <?php if ($category == 'mee') echo 'selected'; ?>>Mee</option>
+        <option value="beverage" <?php if ($category == 'beverage') echo 'selected'; ?>>Beverage</option>
+        <!-- Add more options for other categories -->
+    </select>
+
+    <label for="foodCname"><b>Food's Image: </b></label>
+    <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" class="menuimg"><br><br>
+
+    <button type="submit" name="upload" class="allbutton" id="addButton">Edit</button>
       
     </div>
+    
     <?php
-if (isset($_SESSION['alert_message'])) {
-  $em = $_SESSION['alert_message'];
-  unset($_SESSION['alert_message']); // Clear the session variable
-  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; // Display the alert message
-}?>
-
-  </form></div>
-  <?php endif;?>
+      if (isset($_SESSION['alert_message'])) {
+        $em = $_SESSION['alert_message'];
+        // Clear the session variable
+        unset($_SESSION['alert_message']); 
+        // Display alert message
+        echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
+      }
+    ?>
+  </form>
+</div>
+<?php endif;?>
 </div></div> 
   <?php endif;?>
 
@@ -253,7 +474,7 @@ if (isset($_SESSION['alert_message'])) {
         <?php 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sort = $_POST['sort'];
-        $sql = "SELECT * FROM menu ORDER BY $sort";
+        $sql = "SELECT * FROM Menu ORDER BY $sort";
         $res = mysqli_query($conn, $sql);
     }
     else{
@@ -282,6 +503,7 @@ if (isset($_SESSION['alert_message'])) {
         <input type='number' name='quantity' class='quantity' value='0' min='1'/>
         </div>
         <div class='addfunction'>
+        
         <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
         </div></div>
         
@@ -293,8 +515,10 @@ if (isset($_SESSION['alert_message'])) {
 <?php
 if (isset($_SESSION['alert_message'])) {
   $em = $_SESSION['alert_message'];
-  unset($_SESSION['alert_message']); // Clear the session variable
-  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; // Display the alert message
+  // Clear the session variable
+  unset($_SESSION['alert_message']); 
+  // Display the alert message
+  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
 }?>
 
       

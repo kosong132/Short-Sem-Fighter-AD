@@ -12,6 +12,8 @@ if (isset($_POST['upload']) && isset($_FILES['uploadfile'])) {
     $menu_name = $_POST["menuname"];
     $menu_price = $_POST["menuprice"];
     $menu_description = $_POST["menudesc"];
+    $category = $_POST["category"];
+
     $img_name = $_FILES['uploadfile']['name'];
     $img_size = $_FILES['uploadfile']['size'];
     $img_tmp_name = $_FILES['uploadfile']['tmp_name'];
@@ -28,7 +30,7 @@ if (isset($_POST['upload']) && isset($_FILES['uploadfile'])) {
                 move_uploaded_file($img_tmp_name,$img_upload_path);
 
                 // Insert into database
-                $sql = "insert into menu (menu_img, menu_code, menu_name, menu_price, menu_description) values ('$new_img_name','$menu_code','$menu_name','$menu_price','$menu_description')";
+                $sql = "INSERT INTO menu (menu_img, menu_code, menu_name, menu_price, menu_description, category) VALUES ('$new_img_name', '$menu_code', '$menu_name', '$menu_price', '$menu_description', '$category')";
                 if(mysqli_query($conn,$sql)){
                 $em = "Updated Successfully";}
                 else{

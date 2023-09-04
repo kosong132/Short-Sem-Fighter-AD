@@ -1,9 +1,9 @@
-<?php
+<?php 
+
 $host = "localhost";
 $username = "root";
 $password = "";
 $database = "tepi_sungai";
-
 
 
 //login to MySQL Server from PHP
