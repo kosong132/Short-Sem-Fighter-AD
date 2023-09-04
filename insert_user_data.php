@@ -4,7 +4,7 @@
     </head>
     <body>
         <?php
-            $conn = mysqli_connect("localhost","kk","jingjie02");
+            $conn = mysqli_connect("localhost","root","");
             if(!$conn){
                 die("Could not connect: " . mysqli_connect_error());
             }

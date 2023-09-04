@@ -29,7 +29,7 @@ unset($_SESSION["Login"]);}
     <h2 class="login-heading">Welcome back!</h2>
 
     <div class="login-container">
-        <form action="login_process.php" method="post">
+        <form  method="post" action="login_process.php">
             <div class="form-group">
                 <label for="userID">User ID:</label>
                 <input type="text" name="userID" id="userID" placeholder="Enter your User ID" required>
@@ -40,7 +40,7 @@ unset($_SESSION["Login"]);}
                 <input type="password" name="password" id="password" placeholder="Enter your password" required>
             </div>
             <br>
-            <input type="submit" value="LOGIN">
+            <input type="submit" value="Login">
         </form>
     </div>
 

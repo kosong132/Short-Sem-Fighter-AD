@@ -12,7 +12,7 @@ if ($_SESSION["Login"] != "YES") {
     <head>
         <title>Tepi Sungai</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
-        <link rel="stylesheet" href="css/d-css/mainPage.css">
+        <link rel="stylesheet" href="mainPage.css">
     </head>
 
     <body>
@@ -52,11 +52,11 @@ if ($_SESSION["Login"] != "YES") {
     ?>
 </div>
               <div class="two">
-                  <img src="img/image/platefood.png" class="image1">
+                  <img src="img\homepage.jpg "style =" height: 300px; width: 400px;"  class="image1">
               </div>
             </div>
             <div class="three">
-                <img src="img/image/cendolbanner.png" class="image2">
+                <img src="img/bghomepage.jpg"style =" height: 1000px;" class="image2">
             </div>
             <div class="four">
                 <br><br><br>

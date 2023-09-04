@@ -15,6 +15,10 @@ if (!isset($_COOKIE['visitor_count'])) {
         <title>Jojoe Food</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
         <link rel="stylesheet" href="mainPage.css">
+        <style>
+        .image2{
+        width: -webkit-fill-available;}
+        </style>
     </head>
 
     <div class='menu-container'>
@@ -42,11 +46,11 @@ if (!isset($_COOKIE['visitor_count'])) {
                         <button class="btn signUpNow" onclick="location.href='register.php'">SIGN UP NOW</a></button>
                     </div>
                     <div class="two">
-                        <img src="img/image/platefood.png" class="image1">
+                    <img src="img\homepage.jpg "style =" height: 300px; width: 400px;"  class="image1">
                     </div>
             </div>
                 <div class="three">
-                    <img src="img/image/cendolbanner.png" class="image2">
+                <img src="img/bghomepage.jpg"style =" height: 1000px;" class="image2">
                 </div>
                 <div class="four">
                     <br><br><br>

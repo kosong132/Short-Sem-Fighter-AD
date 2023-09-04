@@ -1,12 +1,31 @@
 <?php
 session_start();
-require_once "config.php";
 
-// Check if registration success session variable is set
-$registrationSuccess = isset($_SESSION["registrationSuccess"]) ? $_SESSION["registrationSuccess"] : false;
+if (isset($_POST["userID"])&&isset($_POST["userName"])&&isset($_POST["password"])&&isset($_POST["email"])&&isset($_POST["phone"])&&isset($_POST["address"])) {
+    $userName = $_POST["userName"];
+    $userID = $_POST["userID"];
+    $pwd = $_POST["password"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $address = $_POST["address"];
+    require_once "config.php";
+    // Check if userID is already taken
 
-// Clear the registration success session variable after use
-unset($_SESSION["registrationSuccess"]);
+    $sql = "INSERT INTO Users(user_id,user_name,user_password,user_level,user_email,user_phonenumber,user_address) VALUES ('$userID','$userName','$pwd',0,'$email','$phone','$address')";
+
+    if (mysqli_query($conn, $sql)) {
+    $_SESSION['USER'] = $userName;
+    $_SESSION['ID'] = $userID;
+    $_SESSION['LEVEL'] = 0;
+    $_SESSION["Login"] = "YES";
+    header("Location: homepage.php");
+    } else {
+     $em= "Duplicate userid!  Sign up failed";
+    echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; // Display the alert message
+  
+}}
+   
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -130,10 +149,10 @@ unset($_SESSION["registrationSuccess"]);
     <h2 class="register-heading">Create an Account</h2>
 
     <div class="register-container">
-        <form action="register_process.php" method="post">
+        <form action="register.php" method="post">
             <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" placeholder="Enter your Username" required>
+                <label for="userName">Username:</label>
+                <input type="text" name="userName" id="userName" placeholder="Enter your Username" required>
             </div>
             <div class="form-group">
                 <label for="userID">User ID:</label>

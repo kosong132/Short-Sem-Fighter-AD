@@ -32,14 +32,18 @@ $mypassword=$_POST['password'];
 
 $sql="SELECT * FROM Users WHERE user_id='$myuser_id' AND user_password='$mypassword'";
 $result = mysqli_query($conn, $sql);
+if ($result === false) {
+    echo "Error executing query: " . mysqli_error($conn);
+    exit;
+}
 
 if (mysqli_num_rows($result) > 0) {
 	// output data of each row
 	while($row = mysqli_fetch_assoc($result)) 
 	{
-		$username = $row["user_name"];
-		$userid = $row["user_id"];
-		$userlevel = $row["user_level"];
+		$user_name = $row["user_name"];
+		$user_id = $row["user_id"];
+		$user_level = $row["user_level"];
 	}
 }
 
@@ -52,9 +56,9 @@ if($count==1){
 $_SESSION["Login"] = "YES";
  
 // Add user information to the session (global session variables)
-$_SESSION['USER'] = $username;
-$_SESSION['ID'] = $userid;
-$_SESSION['LEVEL'] = $userlevel;
+$_SESSION['USER'] = $user_name;
+$_SESSION['ID'] = $user_id;
+$_SESSION['LEVEL'] = $user_level;
 
 
 if ($_SESSION['LEVEL']==2){
