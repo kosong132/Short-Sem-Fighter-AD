@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: 1550px 850px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.menu-bar {
+    background-color: #596988;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+}
+
+.login-heading{
+    text-align: center;
+    font-size: 28px;
+    margin-top: 40px;
+}
+
+.menu-options a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 22px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease; /* Add transitions */
+    padding: 10px 20px; /* Add padding for a larger clickable area */
+    border-radius: 5px; /* Apply rounded corners */
+    border: 1px solid transparent; /* Add a transparent border to maintain consistent layout */
+}
+
+.menu-options a:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+    border-radius: 10px; /* Increase border radius on hover */
+    background-color: #88a4b9;
+}
+
+.login-container {
+    background-color: #59698823;
+    width: 420px;
+    height: 280px;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    padding: 10px;
+    font-size: 15px;
+}
+
+
+.login-container input[type="submit"] {
+    font-weight: bold;
+    width: 50%;
+    background-color: #596988;
+    color: white;
+    cursor: pointer;
+    transition-delay: 0.05s;
+}
+
+.login-container input[type="submit"]:hover{
+    transform: scale(1.1);
+}
+
+.login-options {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.login-options a {
+    color: #596988;
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    color: #00ff7b;
+}
