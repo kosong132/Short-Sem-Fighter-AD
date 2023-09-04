@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if userID is already taken
     $checkQuery = "SELECT * FROM Users WHERE user_id = '$userID'";
     $checkResult = mysqli_query($conn, $checkQuery);
-    if (!$checkResult) {
+
     if (mysqli_num_rows($checkResult) > 0) {
         echo '<script>alert("User ID is already taken. Please choose a different one."); window.location = "register.php";</script>';
     } else {
@@ -31,5 +31,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<script>alert("Error: ' . mysqli_error($conn) . '"); window.location = "register.php";</script>';
         }
     }
-}}
+}
 ?>

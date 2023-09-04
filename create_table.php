@@ -11,6 +11,18 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "tepi_sungai";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
     $users = "CREATE TABLE Users (
         user_id VARCHAR(20) NOT NULL UNIQUE,
@@ -32,6 +44,7 @@ if ($conn->connect_error) {
         category VARCHAR(20) NOT NULL,
         CONSTRAINT menu_pk PRIMARY KEY(menu_code))";
 
+$order = "CREATE TABLE Orders(
 $order = "CREATE TABLE Orders(
     order_id INT(10) AUTO_INCREMENT,
     user_id VARCHAR(10) NOT NULL,
@@ -56,13 +69,28 @@ if (mysqli_query($conn, $users)) {
 } else {
     echo "Error creating table: " . mysqli_connect_error($conn);
 }
+if (mysqli_query($conn, $users)) {
+    echo "Table Users created successfully";
+} else {
+    echo "Error creating table: " . mysqli_connect_error($conn);
+}
 
 if (mysqli_query($conn, $menu)) {
     echo "Table Menu created successfully";
 } else {
     echo "Error creating table: " . mysqli_connect_error($conn);
 }
+if (mysqli_query($conn, $menu)) {
+    echo "Table Menu created successfully";
+} else {
+    echo "Error creating table: " . mysqli_connect_error($conn);
+}
 
+if (mysqli_query($conn, $order)) {
+    echo "Table Order created successfully";
+} else {
+    echo "Error creating table: " . mysqli_connect_error($conn);
+}
 if (mysqli_query($conn, $order)) {
     echo "Table Order created successfully";
 } else {

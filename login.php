@@ -13,6 +13,7 @@ unset($_SESSION["Login"]);}
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Tepi Sungai Food Ordering System Login Page</title>
     <link rel="stylesheet" type="text/css" href="login-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -29,7 +30,7 @@ unset($_SESSION["Login"]);}
     <h2 class="login-heading">Welcome back!</h2>
 
     <div class="login-container">
-        <form  method="post" action="login_process.php">
+        <form action="login_process.php" method="post">
             <div class="form-group">
                 <label for="userID">User ID:</label>
                 <input type="text" name="userID" id="userID" placeholder="Enter your User ID" required>
@@ -40,7 +41,7 @@ unset($_SESSION["Login"]);}
                 <input type="password" name="password" id="password" placeholder="Enter your password" required>
             </div>
             <br>
-            <input type="submit" value="Login">
+            <input type="submit" value="LOGIN">
         </form>
     </div>
 
