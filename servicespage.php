@@ -34,7 +34,7 @@ if(!isset($_SESSION['COUNTER'])){
 
 <html lang="en">   
 <head>
-   <title>Tepi sungai UTM Service Page
+   <title>Tepi sungai UTM Service Page(Menu)
    </title>
    <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
    <?php if($_SESSION['LEVEL']==1):?>
