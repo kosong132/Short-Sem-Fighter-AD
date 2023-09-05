@@ -11,7 +11,7 @@ unset($_SESSION["registrationSuccess"]);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tepi Sungai Food Ordering System Registration Page</title>
+    <title>Tepi Sungai UTM Food Ordering System Registration Page</title>
     <link rel="stylesheet" type="text/css" href="register-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>

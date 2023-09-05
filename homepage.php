@@ -10,7 +10,7 @@ if ($_SESSION["Login"] != "YES") {
 ?>
 <html>
     <head>
-        <title>Tepi Sungai</title>
+        <title>Tepi Sungai UTM Home Page</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
         <link rel="stylesheet" href="mainPage.css">
     </head>
