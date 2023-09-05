@@ -463,7 +463,7 @@ function deleteMenu(menuCode) {
       </div>
 
       <div class="cart">
-        <a data-active="cart" href="cart.php"><img src="img/servicePageImage/shopping-cart.png" style="height: 40px; width: 40px; margin-right: 10px"></a></i>
+        <a data-active="cart" href="cart.php"><img src="img/shopping-cart.png" style="height: 40px; width: 40px; margin-right: 10px"></a></i>
       </div>
 
     </div>

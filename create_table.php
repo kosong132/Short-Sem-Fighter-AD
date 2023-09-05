@@ -44,7 +44,7 @@ if ($conn->connect_error) {
         category VARCHAR(20) NOT NULL,
         CONSTRAINT menu_pk PRIMARY KEY(menu_code))";
 
-$order = "CREATE TABLE Orders(
+
 $order = "CREATE TABLE Orders(
     order_id INT(10) AUTO_INCREMENT,
     user_id VARCHAR(10) NOT NULL,
@@ -64,11 +64,7 @@ $order = "CREATE TABLE Orders(
         CONSTRAINT order_fk FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
         CONSTRAINT od_fk FOREIGN KEY (menu_code) REFERENCES Menu(menu_code) ON DELETE CASCADE)";
 
-if (mysqli_query($conn, $users)) {
-    echo "Table Users created successfully";
-} else {
-    echo "Error creating table: " . mysqli_connect_error($conn);
-}
+
 if (mysqli_query($conn, $users)) {
     echo "Table Users created successfully";
 } else {
@@ -80,17 +76,8 @@ if (mysqli_query($conn, $menu)) {
 } else {
     echo "Error creating table: " . mysqli_connect_error($conn);
 }
-if (mysqli_query($conn, $menu)) {
-    echo "Table Menu created successfully";
-} else {
-    echo "Error creating table: " . mysqli_connect_error($conn);
-}
 
-if (mysqli_query($conn, $order)) {
-    echo "Table Order created successfully";
-} else {
-    echo "Error creating table: " . mysqli_connect_error($conn);
-}
+
 if (mysqli_query($conn, $order)) {
     echo "Table Order created successfully";
 } else {
