@@ -207,8 +207,51 @@ if(!isset($_SESSION['COUNTER'])){
         }
     }
 
+    .modal-content1 {
+      background-color: rgba(89, 105, 136, 0.95);
+      color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border: 5px solid #FFFFFF;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width:50%;
       
+    }
 
+
+    /* Input styles for form fields */
+    .input-container input[type="text"],
+    .input-container input[type="file"],
+    .input-container select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 5px;
+    }
+
+    /* Button styles for the "Add" button */
+    .input-container button {
+      font-weight: bold;
+    }
+
+    .input-container button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Additional styles for file input */
+    .input-container input[type="file"] {
+      border: none;
+      padding: 10px 0;
+    }
+
+    .input-container label {
+      display: block;
+      font-weight: bold;
+      color: white; /* Add this line to set label text color to white */
+    }
 
   </style>
   <script>
@@ -247,6 +290,8 @@ function deleteMenu(menuCode) {
       <a href="servicespage.php">All</a>
       <a href="servicespage.php?category=rice">Rice</a>
       <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=bihun">Bihun</a>
+      <a href="servicespage.php?category=alacarte">Ala' Carte</a>
       <a href="servicespage.php?category=beverage">Beverages</a>
       <!-- Add more category tabs here -->
     </div>
@@ -323,8 +368,6 @@ function deleteMenu(menuCode) {
     </div>
 
     <div class="input-container">
-      <label for="foodCname"><b>Food's Image: </b></label>
-      <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
 
       <label for="foodID"><b>Food's ID</b></label>
       <input type="text" class="foodids" name="menucode" placeholder="" id="foodid" required>
@@ -343,10 +386,14 @@ function deleteMenu(menuCode) {
           <option value="all">All</option>
           <option value="rice">Rice</option>
           <option value="mee">Mee</option>
+          <option value="bihun">Bihun</option>
+          <option value="alacarte">Ala' Carte</option>
           <option value="beverage">Beverage</option>
           <!-- Add more options for other categories -->
       </select>
       
+      <label for="foodCname"><b>Food's Image: </b></label>
+      <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
       <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>  
     </div>
   </form>
@@ -397,6 +444,8 @@ function deleteMenu(menuCode) {
     <select name="category" required>
         <option value="rice" <?php if ($category == 'rice') echo 'selected'; ?>>Rice</option>
         <option value="mee" <?php if ($category == 'mee') echo 'selected'; ?>>Mee</option>
+        <option value="bihun" <?php if ($category == 'bihun') echo 'selected'; ?>>Bihun</option>
+        <option value="alacarte" <?php if ($category == 'alacarte') echo 'selected'; ?>>Ala' Carte</option>
         <option value="beverage" <?php if ($category == 'beverage') echo 'selected'; ?>>Beverage</option>
         <!-- Add more options for other categories -->
     </select>
