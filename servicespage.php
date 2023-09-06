@@ -34,7 +34,7 @@ if(!isset($_SESSION['COUNTER'])){
 
 <html lang="en">   
 <head>
-   <title>Menu Page</title>
+   <title>Tepi Sungai UTM Service Page</title>
    <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
    <?php if($_SESSION['LEVEL']==1):?>
    <link rel='stylesheet' href='css/y-css/serviceSeller.css'/>
@@ -512,7 +512,7 @@ function deleteMenu(menuCode) {
       </div>
 
       <div class="cart">
-        <a data-active="cart" href="cart.php"><img src="img/servicePageImage/shopping-cart.png" style="height: 40px; width: 40px; margin-right: 10px"></a></i>
+        <a data-active="cart" href="cart.php"><img src="img/shopping-cart.png" style="height: 40px; width: 40px; margin-right: 10px"></a></i>
       </div>
 
     </div>
