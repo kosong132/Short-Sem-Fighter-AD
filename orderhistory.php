@@ -39,7 +39,7 @@ if (isset($_GET['tp'])) {
 
 <html>
 <head>
-<title>Jojoe food ordering system login page</title>
+<title>Tepi Sungai UTM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
