@@ -104,4 +104,3 @@ $order = "CREATE TABLE Orders(
     //Close connection
     mysqli_close($conn);
 ?>
-

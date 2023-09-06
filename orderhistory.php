@@ -96,7 +96,7 @@ if (mysqli_num_rows($res) > 0) {
           <div class='order-container'>
           <div class='orderno'> ORDER ID {$row['order_id']} </div>
         <div class='orderDetails'>";
-        $sqli = "SELECT * FROM orderdetail WHERE order_id = '{$row['order_id']}'";
+        $sqli = "SELECT * FROM Orderdetails WHERE order_id = '{$row['order_id']}'";
         $resi = mysqli_query($conn, $sqli);
         if (mysqli_num_rows($resi) > 0) {
             while ($rowi = mysqli_fetch_assoc($resi)) { 
@@ -162,7 +162,7 @@ $sql = "SELECT * FROM Orders WHERE payment_status = 'PAID'";}
 $res = mysqli_query($conn, $sql);
 if (mysqli_num_rows($res) > 0) {
     while ($row = mysqli_fetch_assoc($res)) {
-      $sqla = "SELECT * FROM user WHERE user_id = '{$row['user_id']}'";
+      $sqla = "SELECT * FROM users WHERE user_id = '{$row['user_id']}'";
       
       $resa = mysqli_query($conn, $sqla);
       if (mysqli_num_rows($resa) > 0) {
@@ -173,7 +173,7 @@ if (mysqli_num_rows($res) > 0) {
         echo "<td> {$row['user_id']} </td>
         <td>
         <table class='orderDetails' style='width: 100%;'>";
-        $sqli = "SELECT * FROM orderdetail WHERE order_id = '{$row['order_id']}'";
+        $sqli = "SELECT * FROM Orderdetails WHERE order_id = '{$row['order_id']}'";
         $resi = mysqli_query($conn, $sqli);
         if (mysqli_num_rows($resi) > 0) {
             while ($rowi = mysqli_fetch_assoc($resi)) { 
