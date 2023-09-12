@@ -34,6 +34,7 @@ table, th, tr, td{
   border: 1px solid black;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
+  cursor: pointer;
 }
 
 .orderupper{
