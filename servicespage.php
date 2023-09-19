@@ -54,10 +54,10 @@ if(!isset($_SESSION['COUNTER'])){
     
     /* Body container */
     .body-container {
-      max-width: 1200px;
+      max-width: 900px;
       margin:auto;
       /*padding: 20px;*/
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(255, 255, 255, 0.6);
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
     }
@@ -277,7 +277,7 @@ function deleteMenu(menuCode) {
   <div class="edit-container">
     <div class="grid-container">
       <div class="editMenu">
-        <h2><u>MENU</u></h2>
+        <h1><u>MENU</u></h1>
       </div>
 
       <div class="date">
@@ -285,7 +285,6 @@ function deleteMenu(menuCode) {
         <div><text style="font-size: 1.1rem;" id="currentDate"><?php echo $today?></text></div>
       </div>
     </div>
-
     <div class="categories">
       <a href="servicespage.php">All</a>
       <a href="servicespage.php?category=rice">Rice</a>
@@ -295,6 +294,7 @@ function deleteMenu(menuCode) {
       <a href="servicespage.php?category=beverage">Beverages</a>
       <!-- Add more category tabs here -->
     </div>
+
 
       <!-- Display Menu Items -->
     <div class="grid-container2" id="grid-container2">
@@ -331,13 +331,13 @@ function deleteMenu(menuCode) {
                   <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
                   <div class='engName'> Description: $row[menu_description] </div>
                   <div class='price'> Price: RM$row[menu_price] </div>
-                  
                   <div class='edit allbutton'>
-                    <form method='get' action='servicespage.php'>
-                      <input name='menucode' type='hidden' value='$row[menu_code]'/>
-                      <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
-                    </form>
-                  </div>
+                  <form method='get' action='servicespage.php'>
+                    <input name='menucode' type='hidden' value='$row[menu_code]'/>
+                    <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
+                  </form>
+                </div>                 
+                  
                   
                   <button class='delete allbutton' onclick=\"deleteMenu('{$row['menu_code']}')\">Delete</button>
 
@@ -380,7 +380,6 @@ function deleteMenu(menuCode) {
         
       <label for="foodPrice"><b>Food Price</b></label>
       <input type="text" class="foodPrice" name="menuprice" placeholder="" required>
-
       <label for="category"><b>Category</b></label>
       <select name="category" required>
           <option value="all">All</option>
@@ -391,6 +390,7 @@ function deleteMenu(menuCode) {
           <option value="beverage">Beverage</option>
           <!-- Add more options for other categories -->
       </select>
+     
       
       <label for="foodCname"><b>Food's Image: </b></label>
       <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
@@ -401,7 +401,6 @@ function deleteMenu(menuCode) {
 
 
 <?php 
-  
   if(isset($_GET['menucode'])):
     $menu_code = $_GET["menucode"];
     unset($_GET["menucode"]);
@@ -415,7 +414,7 @@ function deleteMenu(menuCode) {
     </div>
 
   <?php 
-    $sql = "SELECT * FROM menu WHERE menu_code = '$menu_code'";
+    $sql = "SELECT * FROM Menu WHERE menu_code = '$menu_code'";
     $res = mysqli_query($conn, $sql);
     if (mysqli_num_rows($res) > 0) {
       while ($row = mysqli_fetch_assoc($res)) { 
@@ -478,7 +477,7 @@ function deleteMenu(menuCode) {
     <div>
     <div class="grid-container">
       <div class="editMenu">
-        <h2><u>MENU</u></h2>
+        <h1><u>MENU</u></h1>
       </div>
       <div class="filter">
         <form method="post" action="servicespage.php">
@@ -516,8 +515,38 @@ function deleteMenu(menuCode) {
       </div>
 
     </div>
+    <div class="categories">
+      <a href="servicespage.php">All</a>
+      <a href="servicespage.php?category=rice">Rice</a>
+      <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=bihun">Bihun</a>
+      <a href="servicespage.php?category=alacarte">Ala' Carte</a>
+      <a href="servicespage.php?category=beverage">Beverages</a>
+      <!-- Add more category tabs here -->
+    </div>
 
-      <div class="grid-container2" id="grid-container2">
+    <?php
+      // Modify your SQL query based on selected category
+      $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // Your existing SQL query modification based on sortingAC
+          $sort = $_POST['sort'];
+          $categoryFilter = $_POST['category'];
+      } else {
+          // Modify your SQL query to include category filter
+          if ($categoryFilter !== '') {
+              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+          } else {
+              $sql = "SELECT * FROM Menu ORDER BY menu_code";
+          }
+          $res = mysqli_query($conn, $sql);
+      }
+   ?>
+
+ 
+    
+    <div class="grid-container2" id="grid-container2">
         
         <!--place to insert food-->
         <?php 
