@@ -144,7 +144,6 @@ if(!isset($_SESSION['COUNTER'])){
     /* The middle of the food items */
       .grid-container2 {
         background-color: transparent ;
-        
       }
 
       .categories {
@@ -313,8 +312,6 @@ if(!isset($_SESSION['COUNTER'])){
             } 
           ?>
     
-
-
 <?php
   if (isset($_SESSION['alert_message'])) {
     $em = $_SESSION['alert_message'];
