@@ -1,0 +1,206 @@
+.grid-container1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 0.5fr;
+    gap: 20px;
+    height: min-content;
+}
+
+.grid-container{
+    
+    justify-content: center;
+}
+
+.top{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    text-align: left;
+    padding-top: 10px;
+}
+
+.orderDetailsTable{
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr 1fr 2fr 2fr;
+    border: solid black;
+    width: 53rem;
+    height: 26rem;
+}
+
+.table{
+    border: solid black;
+}
+
+.dateLeft{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: left;
+    padding-left: 4rem;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.dateRight{
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+    
+}
+
+.addressLeft{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: left;
+    padding-left: 4rem;
+    align-items: center;
+    font-size: 1.6rem;
+}
+
+.addressRight{
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    align-items: center;
+}
+
+.map{
+    grid-column: 1 / 4;
+    grid-row: 3 / 5
+}
+
+.mapImage{
+    width: 100%;
+    height: 100%;
+}
+
+.editLogo{
+    width: 2.45rem;
+    height: 2.45rem;
+}
+
+.payButton {
+    grid-row: 2 / 3;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.btn{
+    border: solid black;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.btn:hover{
+    background: #eee;
+}
+
+
+
+
+/* Full-width input fields */
+input[type=text]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+  
+.modalButton{
+    background-color: #ccc;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+  
+button:hover {
+    opacity: 0.8;
+}
+  
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+  
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+  
+  
+.container {
+    padding: 16px;
+}
+  
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+  
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+  
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+  
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+  
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+  

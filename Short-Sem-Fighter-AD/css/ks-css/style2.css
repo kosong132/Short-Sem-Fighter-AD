@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+   padding: 0; 
+   box-sizing: border-box;
+   font-family: Verdana, Geneva, Tahoma, sans-serif
+ }
+ 
+ .container {
+   
+   background: #fff;
+   margin: auto;
+   display: grid;
+   grid-template-columns: 0.6fr 1.4fr 2fr;
+   justify-content: center;
+   padding-top: 11.5rem;
+   padding-bottom: 6rem;
+   margin-left: 5rem;
+   margin-right: 5rem;
+   
+ }
+ 
+ .leftcontainer{
+     font-size: 25px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     width: 40%;
+   grid-column-start: 2;
+     grid-column-end: 3;
+   }
+   
+   .userid{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+   }
+   .password{
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+   }
+   .resetpwd{
+    padding-left: 3.5rem;
+     margin-top: 0.5rem;
+     font-size: 1rem;
+     margin-bottom: 1.3rem;    
+     width:20rem; 
+   }
+   
+
+  .resetpwd a:hover {
+    text-decoration: underline;
+  }
+  .signup a{
+  color: rgb(25, 0, 190);
+  }
+.signup a:hover{
+  text-decoration: underline;
+}
+
+   .line-container {
+    text-align: left;
+    width: 20rem;
+    padding-bottom: 1.5rem;
+    
+  }
+  
+  .line {
+    display: inline-block;
+    width: 32%;
+    margin: 0 6px;
+    border: none;
+    border-top: 1px solid black;
+  }
+  
+  .line-text {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+   .signup{
+     margin-bottom: 0.5rem;
+     font-size: 1.0rem;
+     margin-top: 0.5rem;
+     width: 20rem;
+   }
+   .loginbutton{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+   }
+   #login {
+     padding: 8px 112.27px;
+     background-color: #ffffff;
+     color: rgb(0, 0, 0);
+     font-size: 1.2rem;
+     border-radius: 0.5rem;
+     cursor: pointer;
+
+   }
+   
+   #login:hover {
+     background-color: #ebeaea;
+   }
+ 
+   .rightcontainer{
+ 
+     margin: 0 0;
+    text-align: center;
+     margin-top:auto;
+     margin-bottom:auto;
+     grid-column-start: 3;
+     grid-column-end: 5;
+ 
+     width: 40%;
+     grid-template-rows: 1fr;
+     
+   }
+ 
+   .inputtype{
+     padding: 0.5rem;
+     border-radius: 0.5rem;
+     margin-top: 0.5rem;
+ }
+
+ .foodlogo{
+   align-items: center;
+   padding-left: 3rem;
+   padding-bottom: 1.5rem;
+ }
+
+ .foodcontainer{
+ display: grid;
+ }
+ 
+ .footercontainer{
+ 
+     display: flex;
+     justify-content: center;
+     
+     
+   }
+
+   .logina{
+    font-weight: 3px;
+    font-size: 40px;
+    margin-bottom: 3rem;
+   }
+
+   .popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .popup-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    text-align: center;
+  }
