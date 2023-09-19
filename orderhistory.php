@@ -54,100 +54,113 @@ else{
 <link rel="stylesheet" type="text/css" href="css/y-css/navigationbar&body.css" id="stylesheet">
 <!-- <meta name="editport" content="width=device-width, initial-scale=1"> -->
 <style>
-/* .infobox {
-    width: 200px;
-    height: 100px;
-    background-color: #3498db;
-    color: #fff;
-    text-align: center;
-    line-height: 100px;
-    cursor: pointer;
-    }; */
-    /* CSS for the modal */
-    
+
     body {
       background-image: url('img/backgroundImage/Cart_background.jpg');
       background-size: cover;        
       background-repeat: no-repeat;
       background-attachment: fixed;      
     }
-    .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
+    .food {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
 
-    .modal-content {
-        background-color: #fff;
-        width: 300px;
-        margin: 100px auto;
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    }
+/* Updated styles for the popup overlay */
+.popup-overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+z-index: 1;
+display: flex;
+justify-content: center;
+align-items: center;
+}
 
-    /* CSS for the close button */
-    .close {
-        color: #888;
-        float: right;
-        font-size: 24px;
-        cursor: pointer;
-    }
+/* CSS for the popup content */
+.popup-content {
+background-color: #fff; /* White background */
+border: 1px solid #ccc;
+padding: 20px;
+max-width: 600px;
+text-align: center;
+cursor: pointer;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle elevation */
+}
 
-    .close:hover {
-        color: #000;
-    }
+/* Header style */
+.popup-content h2 {
+font-size: 1.5rem;
+margin-bottom: 10px;
+}
+
+/* Food item style */
+.food-item {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+}
+
+.food-img img {
+width: 80px; /* Adjust image width as needed */
+height: 60px; /* Adjust image height as needed */
+margin-right: 10px;
+}
+
+.food-details p {
+margin: 0;
+text-align: left;
+}
+
+/* Line separator */
+.line {
+border-top: 1px solid #ccc;
+margin: 10px 0;
+}
+
+/* Total style */
+.total p {
+font-weight: bold;
+font-size: 1.2rem;
+}
+
+/* Payment status and time style */
+.popup-content h3 {
+font-size: 1.2rem;
+margin-top: 10px;
+}
+    
+    
     </style>
 <script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+ function showPopup(id) {
+            const popup = document.getElementById(id);
+            if (popup) {
+                popup.style.display = "flex";
+            }
+        }
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-
-      const boxes = document.querySelectorAll('.box');
-        const modals = document.querySelectorAll('.modal');
-        const closeBtns = document.querySelectorAll('.close');
-
-        // Function to open the modal
-        boxes.forEach((box, index) => {
-            box.addEventListener('click', () => {
-                modals[index].style.display = 'block';
-            });
-        });
-
-        // Function to close the modal
-        closeBtns.forEach((closeBtn, index) => {
-            closeBtn.addEventListener('click', () => {
-                modals[index].style.display = 'none';
-            });
-        });
-
-        // Close the modal if the user clicks anywhere outside of it
-        window.addEventListener('click', (event) => {
-            modals.forEach((modal) => {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
+        function hidePopup(id) {
+            const popup = document.getElementById(id);
+            if (popup) {
+                popup.style.display = "none";
+            }
+        }
+      
 </script>
 </head>
 <body> 
   
 <?php
 include("header.php");
-?>popup 
+?>
 <?php
     
 ?>
@@ -163,48 +176,115 @@ include("header.php");
             </div>
     <div class="grid-container">
     <?php
-    $sql = "SELECT * FROM Orders WHERE payment_status = 'PAID' AND user_id = '{$_SESSION['ID']}' ORDER BY payment_date DESC";
-    $res = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($res) > 0) {
-    while ($row = mysqli_fetch_assoc($res)) { 
-        echo 
-        "<div class='infobox' id='infobox' >
+$user_id = $_SESSION['ID'];
+$user_query = "SELECT user_name FROM users WHERE user_id = '$user_id'";
+$user_result = mysqli_query($conn, $user_query);
+$user_row = mysqli_fetch_assoc($user_result);
+$customer_name = $user_row['user_name'];
+
+// Retrieve orders for the logged-in user
+$sql = "SELECT * FROM Orders WHERE payment_status = 'PAID' AND user_id = '$user_id' ORDER BY payment_date DESC";
+$res = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($res) > 0) {
+    while ($row = mysqli_fetch_assoc($res)) {
+        echo "
+        <div class='infobox' onclick='showPopup(\"infobox{$row['order_id']}\")'>
             <div class='orderupper'>
                 <div class='foodimg'><img src='img/order-food.png'></div>
-            <div class='order-container'>
-                <div class='orderno'> ORDER ID {$row['order_id']} </div>
-            <div class='orderDetails'>";
-                $sqli = "SELECT * FROM Orderdetails WHERE order_id = '{$row['order_id']}'";
-                $resi = mysqli_query($conn, $sqli);
-                if (mysqli_num_rows($resi) > 0) {
-                while ($rowi = mysqli_fetch_assoc($resi)) { 
-                $menu_name = "SELECT * FROM Menu WHERE menu_code = '$rowi[menu_code]'";
+                <div class='order-container'>
+                    <div class='orderno'> ORDER ID {$row['order_id']} </div>
+                    <div class='orderDetails'>";
+        
+        $sqli = "SELECT * FROM Orderdetails WHERE order_id = '{$row['order_id']}'";
+        $resi = mysqli_query($conn, $sqli);
+        
+        if (mysqli_num_rows($resi) > 0) {
+            while ($rowi = mysqli_fetch_assoc($resi)) {
+                $menu_name = "SELECT * FROM Menu WHERE menu_code = '{$rowi['menu_code']}'";
                 $query_menu_name = mysqli_query($conn, $menu_name);
                 $res_menu_name = mysqli_fetch_assoc($query_menu_name);
                 $total_order_price = $rowi['order_quantity'] * $rowi['order_price'];
-                
-    
+
                 echo "<div class='orderitem'>
-                      <div class='menucode'> $rowi[menu_code] </div>
-                      <div class='menuname'> $res_menu_name[menu_name] </div>
-                      <div class='quantityorder'> x $rowi[order_quantity] </div>
-                      <div class='price'> RM $total_order_price </div>
-                      </div>";} }
-            echo 
-            "</div>
-            </div></div>
-                <div>
-                <div class='line'>
-                <div class='total'>Total :</div>
-                <div class='TotalPrice'>RM $row[total_price]</div>
+                          <div class='menucode'> {$rowi['menu_code']} </div>
+                          <div class='menuname'> {$res_menu_name['menu_name']} </div>
+                          <div class='quantityorder'> x {$rowi['order_quantity']} </div>
+                          <div class='price'> RM {$total_order_price} </div>
+                      </div>";
+            }
+        }
+        
+        echo "</div></div></div><div><div class='line'>
+                  <div class='total'>Total :</div>
+                  <div class='TotalPrice'>RM {$row['total_price']}</div>
+              </div></div></div>";
+
+        // Create a dynamic popup for each order
+        echo "
+        <div class='popup-overlay' id='infobox{$row['order_id']}' onclick='hidePopup(\"infobox{$row['order_id']}\")' style='display: none;'>
+            <div class='popup-content'>
+                <h3> Tepi Sungai UTM </h3>
+                <h4> E06, School of Mechanical Engineering</h4>
+                 <h4>81310 UTM Johor</h4>
+                <h3>Order ID: {$row['order_id']}</h3>
+                <h3>Customer Name: $customer_name</h3>";
+        
+                $resi = mysqli_query($conn, $sqli);
+        
+                if (mysqli_num_rows($resi) > 0) {
+                  $i = 1; // Initialize a counter
+        
+                  echo "
+                  <div class='food-details'>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th style='width:300px;' >Items</th>
+                          <th>Price (RM)</th>
+                        </tr>
+                      </thead>
+                      <tbody>";
+        
+                  while ($rowi = mysqli_fetch_assoc($resi)) {
+                      $menu_name = "SELECT * FROM Menu WHERE menu_code = '{$rowi['menu_code']}'";
+                      $query_menu_name = mysqli_query($conn, $menu_name);
+                      $res_menu_name = mysqli_fetch_assoc($query_menu_name);
+                     
+                      $total_order_price = $rowi['order_quantity'] * $rowi['order_price'];
+                      
+                      echo "<tr>
+                      <td>{$i}</td>
+                      <td>{$rowi['order_quantity']} x {$res_menu_name['menu_name']} (foreach{$res_menu_name['menu_price']})</td>
+                      <td class='subtotal'> " . number_format($total_order_price, 2) . "</td>
+                  </tr>";
+        
+                      $i++; // Increment the counter
+                  }
+        
+                  echo "
+                      </tbody>
+                    </table>
+                  </div>";
+                }
+        
+                echo "
+                <div class='line'></div>
+                <div class='payment-details'>
+                    <div class='payment-left'>
+                        <p>Total Amount: RM {$row['total_price']}</p>
+                        <p>Payment Status: Paid</p>
+                        <p>Payment Time: {$row['payment_date']}</p>
+                    </div>
+                    <div class='payment-right'>
+                        <!-- Add your details here -->
+                    </div>
                 </div>
                 </div>
-               
-                
-         </div>";}}
-         
-         
-         
+                </div>";
+            }
+        }
 ?>
 
 

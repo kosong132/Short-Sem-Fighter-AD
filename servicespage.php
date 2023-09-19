@@ -285,7 +285,15 @@ function deleteMenu(menuCode) {
         <div><text style="font-size: 1.1rem;" id="currentDate"><?php echo $today?></text></div>
       </div>
     </div>
-
+    <div class="categories">
+      <a href="servicespage.php">All</a>
+      <a href="servicespage.php?category=rice">Rice</a>
+      <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=bihun">Bihun</a>
+      <a href="servicespage.php?category=alacarte">Ala' Carte</a>
+      <a href="servicespage.php?category=beverage">Beverages</a>
+      <!-- Add more category tabs here -->
+    </div>
 
 
       <!-- Display Menu Items -->
@@ -323,7 +331,12 @@ function deleteMenu(menuCode) {
                   <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
                   <div class='engName'> Description: $row[menu_description] </div>
                   <div class='price'> Price: RM$row[menu_price] </div>
-                  
+                  <div class='edit allbutton'>
+                  <form method='get' action='servicespage.php'>
+                    <input name='menucode' type='hidden' value='$row[menu_code]'/>
+                    <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
+                  </form>
+                </div>                 
                   
                   
                   <button class='delete allbutton' onclick=\"deleteMenu('{$row['menu_code']}')\">Delete</button>
@@ -367,7 +380,16 @@ function deleteMenu(menuCode) {
         
       <label for="foodPrice"><b>Food Price</b></label>
       <input type="text" class="foodPrice" name="menuprice" placeholder="" required>
-
+      <label for="category"><b>Category</b></label>
+      <select name="category" required>
+          <option value="all">All</option>
+          <option value="rice">Rice</option>
+          <option value="mee">Mee</option>
+          <option value="bihun">Bihun</option>
+          <option value="alacarte">Ala' Carte</option>
+          <option value="beverage">Beverage</option>
+          <!-- Add more options for other categories -->
+      </select>
      
       
       <label for="foodCname"><b>Food's Image: </b></label>
@@ -493,8 +515,38 @@ function deleteMenu(menuCode) {
       </div>
 
     </div>
+    <div class="categories">
+      <a href="servicespage.php">All</a>
+      <a href="servicespage.php?category=rice">Rice</a>
+      <a href="servicespage.php?category=mee">Mee</a>
+      <a href="servicespage.php?category=bihun">Bihun</a>
+      <a href="servicespage.php?category=alacarte">Ala' Carte</a>
+      <a href="servicespage.php?category=beverage">Beverages</a>
+      <!-- Add more category tabs here -->
+    </div>
 
-      <div class="grid-container2" id="grid-container2">
+    <?php
+      // Modify your SQL query based on selected category
+      $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
+
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+          // Your existing SQL query modification based on sortingAC
+          $sort = $_POST['sort'];
+          $categoryFilter = $_POST['category'];
+      } else {
+          // Modify your SQL query to include category filter
+          if ($categoryFilter !== '') {
+              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+          } else {
+              $sql = "SELECT * FROM Menu ORDER BY menu_code";
+          }
+          $res = mysqli_query($conn, $sql);
+      }
+   ?>
+
+ 
+    
+    <div class="grid-container2" id="grid-container2">
         
         <!--place to insert food-->
         <?php 

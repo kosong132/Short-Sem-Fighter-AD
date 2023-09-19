@@ -18,7 +18,7 @@ if(isset($_POST['address'])){
 ?>
 <html>
     <head>
-        <title>Order History Tepi Sungai UTM</title>
+        <title>Cart Summary Tepi Sungai UTM</title>
         <link rel='stylesheet' href='css/y-css/navigationbar&body.css'/>
         <link rel="stylesheet" href="css/d-css/orderDetails.css">
     </head>
