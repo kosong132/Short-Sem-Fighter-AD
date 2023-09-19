@@ -316,8 +316,6 @@ function deleteMenu(menuCode) {
           $res = mysqli_query($conn, $sql);
       }
 
-
-
           if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) { 
               echo "
@@ -522,71 +520,77 @@ function deleteMenu(menuCode) {
       <a href="servicespage.php?category=bihun">Bihun</a>
       <a href="servicespage.php?category=alacarte">Ala' Carte</a>
       <a href="servicespage.php?category=beverage">Beverages</a>
-      <!-- Add more category tabs here -->
     </div>
 
-    <?php
-      // Modify your SQL query based on selected category
+     <div class="grid-container2" id="grid-container2">
+      <?php
       $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
 
       if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          // Your existing SQL query modification based on sortingAC
-          $sort = $_POST['sort'];
-          $categoryFilter = $_POST['category'];
-      } else {
-          // Modify your SQL query to include category filter
-          if ($categoryFilter !== '') {
-              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
-          } else {
-              $sql = "SELECT * FROM Menu ORDER BY menu_code";
-          }
-          $res = mysqli_query($conn, $sql);
-      }
-   ?>
-
- 
-    
-    <div class="grid-container2" id="grid-container2">
-        
-        <!--place to insert food-->
-        <?php 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sort = $_POST['sort'];
-        $sql = "SELECT * FROM Menu ORDER BY $sort";
-        $res = mysqli_query($conn, $sql);
-    }
-    else{
-        $sql = "SELECT * FROM menu ORDER BY menu_code";
-        $res = mysqli_query($conn, $sql);
-    }
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) { 
-            
-            echo "
-            <form method='post' action='updateOrder.php'>
-            <div class='food'>
-            <div class='images'>";?>
+        $categoryFilter = isset($_POST['category']) ? $_POST['category'] : 'all';
 
-            <img class="picturesize" src="img/menuimages/<?=$row['menu_img']?>">
+    
+        if ($categoryFilter !== 'all') {
+            if ($sort === 'menu_name') {
+                // Sort by menu name
+                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_name";
+            } elseif ($sort === 'menu_price') {
+                // Sort by menu price
+                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_price";
+            }
+        } else {
+            if ($sort === 'menu_name') {
+                // Sort by menu name
+                $sql = "SELECT * FROM Menu ORDER BY menu_name";
+            } elseif ($sort === 'menu_price') {
+                // Sort by menu price
+                $sql = "SELECT * FROM Menu ORDER BY menu_price";
+            }
+        }
+    } else {
+        if ($categoryFilter !== '') {
+            $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+        } else {
+            $sql = "SELECT * FROM Menu ORDER BY menu_code";
+        }
+    }
+    
+    $res = mysqli_query($conn, $sql);
+      
+
+          if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) { 
+                  
+                echo "
+                <form method='post' action='updateOrder.php'>
+                <div class='food'>
+                <div class='images'>";
+        ?>
+
+          <img class="picturesize" src="img/menuimages/<?=$row['menu_img']?>">
             
-        <?php echo "</div>
-        <div class='details'>
-        <div class='foodIDs'>
-        <div class='foodcode'>$row[menu_code]</div>
-        <div class='menuname'>$row[menu_name]</div></div>
-        <div class='engName'> $row[menu_description] </div>
-        <div class='lastrow'><div class='price'> RM $row[menu_price] </div>
-        <div class='num'>
-        <input type='hidden' name='menu_code[]' value='{$row['menu_code']}'/>
-        <input type='number' name='quantity' class='quantity' value='0' min='1'/>
-        </div>
-        <div class='addfunction'>
-        
-        <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
-        </div></div>
-        
-      </div></div></form>";
-        } } ?>
+          <?php 
+            echo "</div>
+            <div class='details'>
+            <div class='foodIDs'>
+            <div class='foodcode'>$row[menu_code]</div>
+            <div class='menuname'>$row[menu_name]</div></div>
+            <div class='engName'> $row[menu_description] </div>
+            <div class='lastrow'><div class='price'> RM $row[menu_price] </div>
+            <div class='num'>
+            <input type='hidden' name='menu_code[]' value='{$row['menu_code']}'/>
+            <input type='number' name='quantity' class='quantity' value='0' min='1'/>
+            </div>
+            <div class='addfunction'>
+            
+            <button type='submit' class='addcart addToCart allbutton'>Add to Cart</button>
+            </div></div>
+            
+          </div></div></form>";
+            } 
+          } 
+        ?>
           
         </div>
       </div>
