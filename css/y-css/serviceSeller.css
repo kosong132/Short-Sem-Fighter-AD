@@ -1,72 +1,74 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 0.5fr 0.5fr;
-    gap: 20px;
-    height: min-content;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.5fr 0.5fr;
+  gap: 20px;
+  height: min-content;
 }
 
 .grid-container2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    height: min-content;
-    background-color:rgba(89, 105, 136, 0.35);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  height: min-content;
+  background-color: rgba(89, 105, 136, 0.35);
 }
 
 .editMenu {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-    text-align: left;
-    padding-top: 10px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  text-align: left;
+  padding-top: 10px;
 }
 
 .date {
-    display: flex;
-    align-items: center;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    text-align: left;
-    padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  text-align: left;
+  padding: 20px 20px;
 }
 
 .cart {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    text-align: right;
-    padding: 20px 20px;
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  text-align: right;
+  padding: 20px 20px;
 }
 
-.edit-container{
+.edit-container {
   width: 85%;
 }
-.mybutton:hover{
-    background-color: rgb(230, 230, 230);
+
+.mybutton:hover {
+  background-color: rgb(230, 230, 230);
 }
 
 .body-container img {
-    height: 250px;
-    width: 250px;
+  height: 250px;
+  width: 250px;
 }
 
-.food{
+.food {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  
+
 }
-.thumb{
+
+.thumb {
   text-align: center;
   grid-column: 1/2;
 }
 
 .details {
-    display: grid;
-    grid-column:2/3;
-    
-    grid-template-columns: repeat(3, 0.8fr);
-    grid-template-rows: repeat(3, 0.8fr);
-    gap: 10px;
-    margin: 10px 0;
+  display: grid;
+  grid-column: 2/3;
+
+  grid-template-columns: repeat(3, 0.8fr);
+  grid-template-rows: repeat(3, 0.8fr);
+  gap: 10px;
+  margin: 10px 0;
 }
 
 .details .foodID {
@@ -76,155 +78,183 @@
 }
 
 .details .name {
-    grid-column: 1 / 3;
-    grid-row: 1 / 2;
-    text-align: left;
-    margin-left: 18px;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  text-align: left;
+  margin-left: 18px;
 }
 
 .details .engName {
-    grid-column: 1 / 4;
-    grid-row: 2 / 3;
-    text-align: left;
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+  text-align: left;
 }
 
 .details .price {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    text-align: left;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  text-align: left;
 }
 
 #plusButton {
-    background: rgb(20, 170, 229);
-    color: white;
-    height: 50px;
-    width: 50px;
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    border: 0px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
+  background: rgb(20, 170, 229);
+  color: white;
+  height: 50px;
+  width: 50px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border: 0px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
 
 }
 
 #button {
-    background-color: rgb(20, 170, 229);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: rgb(20, 170, 229);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
-.filebox{
-  display:flex;
+.filebox {
+  display: flex;
 }
+
 /*pop up menu for input data*/
 /*======================================================================*/
 .foodCname, .foodEngName, .foodPrice, .foodids {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-  /* Set a style for all buttons */
+/* Set a style for all buttons */
 .allbutton {
-    background-color: rgb(20, 170, 229);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+  background-color: rgb(20, 170, 229);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
 }
 
 .allbutton:hover {
-    opacity: 0.8;
-  }
-  
-  /* Center the image and position the close button */
-  .imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
-  }
-  
-  .menuimg{
-    margin-left:1rem;
-  }
-  .input-container {
-    padding: 16px;
-  }
-  
-  .modal2 {
-    display: block; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+  opacity: 0.8;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.menuimg {
+  margin-left: 1rem;
+}
+
+.input-container {
+  padding: 16px;
+}
+
+.modal2 {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.4s;
+  animation: animatezoom 0.4s
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0)
   }
 
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+  to {
+    -webkit-transform: scale(1)
   }
-  
-  /* The Close Button (x) */
-  .close {
-    position: absolute;
-    right: 25px;
-    top: 0;
-    color: #000;
-    font-size: 35px;
-    font-weight: bold;
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
   }
-  
-  .close:hover,
-  .close:focus {
-    color: red;
-    cursor: pointer;
+
+  to {
+    transform: scale(1)
   }
-  
-  /* Add Zoom Animation */
-  .animate {
-    -webkit-animation: animatezoom 0.4s;
-    animation: animatezoom 0.4s
-  }
-  
-  @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
-    to {-webkit-transform: scale(1)}
-  }
-    
-  @keyframes animatezoom {
-    from {transform: scale(0)} 
-    to {transform: scale(1)}
-  }
-  
+}
+
 /*edit delete for details*/
 /*======================================================================*/
 .details .edit {
@@ -251,7 +281,7 @@
   min-width: 20px;
 }
 
-.position{
+.position {
   display: block;
 }
 
@@ -264,20 +294,28 @@
 }
 
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black background with opacity */
 }
 
 .modal-content1 {
   background-color: #fefefe;
-  margin: 2rem auto; /* 15% from the top and centered */
+  margin: 2rem auto;
+  /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
@@ -298,12 +336,11 @@
   cursor: pointer;
 }
 
-.b-container{
-position: fixed;
-top: 0;
-z-index: 9;
-width: 100%;
-background: #1572dd;
-overflow: hidden;
+.b-container {
+  position: fixed;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  background: #1572dd;
+  overflow: hidden;
 }
-

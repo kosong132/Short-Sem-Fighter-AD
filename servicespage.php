@@ -51,8 +51,6 @@ if(!isset($_SESSION['COUNTER'])){
       background-repeat: no-repeat;
       background-attachment: fixed;      
     }
-    
-    /* Body container */
     .body-container {
       max-width: 900px;
       margin:auto;
@@ -62,7 +60,6 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 10px;
     }
 
-    /* Add spacing between food items */
     .food {
       display: flex;
       align-items: center;
@@ -122,11 +119,9 @@ if(!isset($_SESSION['COUNTER'])){
       display: flex;
       justify-content: space-between;
       align-items: center;
-      
-      
+
     }
 
-    /* Edit button */
     .food .editButton {
       background-color: #3498db;
       color: white;
@@ -135,24 +130,11 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
-      
     }
-
     
     .food .edit:hover {
       background-color: #2980b9;
     }
-
-    /* Delete button 
-    .food .deleteButton {
-      background-color: #e74c3c;
-      color: white;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }*/
 
     .food .delete:hover {
       background-color: #c0392b;
@@ -195,7 +177,6 @@ if(!isset($_SESSION['COUNTER'])){
         color: #ffffff;
       } 
 
-    /* Responsive styles (Can be deleted)*/
     @media screen and (max-width: 768px) {
         .categories {
             flex-direction: column;
@@ -218,8 +199,6 @@ if(!isset($_SESSION['COUNTER'])){
       
     }
 
-
-    /* Input styles for form fields */
     .input-container input[type="text"],
     .input-container input[type="file"],
     .input-container select {
@@ -232,7 +211,6 @@ if(!isset($_SESSION['COUNTER'])){
       border-radius: 5px;
     }
 
-    /* Button styles for the "Add" button */
     .input-container button {
       font-weight: bold;
     }
@@ -241,7 +219,6 @@ if(!isset($_SESSION['COUNTER'])){
       background-color: #2980b9;
     }
 
-    /* Additional styles for file input */
     .input-container input[type="file"] {
       border: none;
       padding: 10px 0;
@@ -250,18 +227,18 @@ if(!isset($_SESSION['COUNTER'])){
     .input-container label {
       display: block;
       font-weight: bold;
-      color: white; /* Add this line to set label text color to white */
+      color: white; 
     }
 
   </style>
-  <script>
 
-function deleteMenu(menuCode) {
-  if (confirm("Are you sure you want to delete this item?")) {
-    window.location.href = 'operation.php?pass=' + menuCode;
-  }
-}
-</script>
+  <script>
+    function deleteMenu(menuCode) {
+      if (confirm("Are you sure you want to delete this item?")) {
+        window.location.href = 'operation.php?pass=' + menuCode;
+      }
+    }
+  </script>
 
 
   </head>
@@ -292,29 +269,24 @@ function deleteMenu(menuCode) {
       <a href="servicespage.php?category=bihun">Bihun</a>
       <a href="servicespage.php?category=alacarte">Ala' Carte</a>
       <a href="servicespage.php?category=beverage">Beverages</a>
-      <!-- Add more category tabs here -->
     </div>
-
 
       <!-- Display Menu Items -->
     <div class="grid-container2" id="grid-container2">
       <?php
-      // Modify your SQL query based on selected category
-      $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
+        $categoryFilter = isset($_GET['category']) ? $_GET['category'] : '';
 
-      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-          // Your existing SQL query modification based on sortingAC
-          $sort = $_POST['sort'];
-          $categoryFilter = $_POST['category'];
-      } else {
-          // Modify your SQL query to include category filter
-          if ($categoryFilter !== '') {
-              $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
-          } else {
-              $sql = "SELECT * FROM Menu ORDER BY menu_code";
-          }
-          $res = mysqli_query($conn, $sql);
-      }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $sort = $_POST['sort'];
+            $categoryFilter = $_POST['category'];
+        } else {
+            if ($categoryFilter !== '') {
+                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_code";
+            } else {
+                $sql = "SELECT * FROM Menu ORDER BY menu_code";
+            }
+            $res = mysqli_query($conn, $sql);
+        }
 
           if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) { 
@@ -322,25 +294,21 @@ function deleteMenu(menuCode) {
                 <div class='food'>
                   <div class='thumb'>";?>
                     <img class="image" src="img/menuimages/<?=$row['menu_img']?>">
-                  
                 <?php 
                   echo "</div>
                   <div class='details'>
-                  <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
-                  <div class='engName'> Description: $row[menu_description] </div>
-                  <div class='price'> Price: RM$row[menu_price] </div>
-                  <div class='edit allbutton'>
-                  <form method='get' action='servicespage.php'>
-                    <input name='menucode' type='hidden' value='$row[menu_code]'/>
-                    <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
-                  </form>
-                </div>                 
-                  
-                  
-                  <button class='delete allbutton' onclick=\"deleteMenu('{$row['menu_code']}')\">Delete</button>
-
+                    <div class='foodID'> $row[menu_code]   $row[menu_name]</div>
+                    <div class='engName'> Description: $row[menu_description] </div>
+                    <div class='price'> Price: RM$row[menu_price] </div>
+                    <div class='edit allbutton'>
+                      <form method='get' action='servicespage.php'>
+                        <input name='menucode' type='hidden' value='$row[menu_code]'/>
+                        <button type='submit' onclick='display();'class='edit allbutton'>Edit</button>
+                      </form>
+                    </div>                 
+                    <button class='delete allbutton' onclick=\"deleteMenu('{$row['menu_code']}')\">Delete</button>
                   </div>
-                  </div>";
+                </div>";
               } 
             } 
           ?>
@@ -386,10 +354,8 @@ function deleteMenu(menuCode) {
           <option value="bihun">Bihun</option>
           <option value="alacarte">Ala' Carte</option>
           <option value="beverage">Beverage</option>
-          <!-- Add more options for other categories -->
       </select>
      
-      
       <label for="foodCname"><b>Food's Image: </b></label>
       <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" required><br><br>
       <button type="submit" name="upload" class="allbutton" id="addButton">ADD</button>  
@@ -404,7 +370,7 @@ function deleteMenu(menuCode) {
     unset($_GET["menucode"]);
 ?>
 
-<div id="id02" class="modal2" >
+<div id="id02" class="modal2">
   <form class="modal-content1 animate" action="operation.php" method="post" enctype="multipart/form-data">
     <div class="imgcontainer">
       <span  onclick="document.getElementById('id02').style.display='none';" class="close" title="Close Modal"><a href="servicespage.php" style="text-decoration: none;">&times;</a></span>
@@ -420,6 +386,7 @@ function deleteMenu(menuCode) {
         $menu_name = $row["menu_name"];
         $menu_price = $row["menu_price"];
         $menu_description = $row["menu_description"];
+        $menu_image = $row["menu_img"];
         $category = $row["category"]; 
       } 
     } 
@@ -444,14 +411,12 @@ function deleteMenu(menuCode) {
         <option value="bihun" <?php if ($category == 'bihun') echo 'selected'; ?>>Bihun</option>
         <option value="alacarte" <?php if ($category == 'alacarte') echo 'selected'; ?>>Ala' Carte</option>
         <option value="beverage" <?php if ($category == 'beverage') echo 'selected'; ?>>Beverage</option>
-        <!-- Add more options for other categories -->
     </select>
 
     <label for="foodCname"><b>Food's Image: </b></label>
     <input type="file" name="uploadfile" accept="image/jpeg, image/png, image/jpg" class="menuimg"><br><br>
 
     <button type="submit" name="upload" class="allbutton" id="addButton">Edit</button>
-      
     </div>
     
     <?php
@@ -530,14 +495,13 @@ function deleteMenu(menuCode) {
         $sort = $_POST['sort'];
         $categoryFilter = isset($_POST['category']) ? $_POST['category'] : 'all';
 
-    
         if ($categoryFilter !== 'all') {
             if ($sort === 'menu_name') {
                 // Sort by menu name
-                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_name";
+                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ";
             } elseif ($sort === 'menu_price') {
                 // Sort by menu price
-                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ORDER BY menu_price";
+                $sql = "SELECT * FROM Menu WHERE category = '$categoryFilter' ";
             }
         } else {
             if ($sort === 'menu_name') {
@@ -595,13 +559,14 @@ function deleteMenu(menuCode) {
         </div>
       </div>
 <?php
-if (isset($_SESSION['alert_message'])) {
-  $em = $_SESSION['alert_message'];
-  // Clear the session variable
-  unset($_SESSION['alert_message']); 
-  // Display the alert message
-  echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
-}?>
+  if (isset($_SESSION['alert_message'])) {
+    $em = $_SESSION['alert_message'];
+    // Clear the session variable
+    unset($_SESSION['alert_message']); 
+    // Display the alert message
+    echo '<script>window.onload = function() { alert("' . $em . '"); }</script>'; 
+  }
+?>
 
       
   </div> 

@@ -1,12 +1,11 @@
-<!-- <?php
+<?php
     session_start();
     include("config.php");
 
     if ($_SESSION["Login"] != "YES") {
         header("Location: guest_form.php");
     }
-?> -->
-
+?> 
 <html>
 <head>
     <title>Tepi Sungai UTM Food Cart </title>
@@ -25,14 +24,14 @@
         background-image: url('img/backgroundImage/Cart_background.jpg');
         background-size: cover;        
         background-repeat: no-repeat;
-        background-attachment: fixed;   /* Keeps the background image fixed while scrolling */
+        background-attachment: fixed;  
     }
 
     .body-container2 {
         max-width: 900px;
         margin: auto;
-        padding-top: 8rem; /*container up padding*/
-        padding-bottom: 8rem; /*container up padding*/
+        padding-top: 8rem; 
+        padding-bottom: 8rem; 
     }
    
 
@@ -125,12 +124,12 @@
         justify-content: center;
         text-align: center;
         font-size: 1.5rem;
-        color: #777; /* Adjust the color for a more subtle appearance */
+        color: #777; 
     }
 
     .foodList.empty {
-        border: none; /* Remove border for the empty cart container */
-        min-height: auto; /* Reset the minimum height */
+        border: none; 
+        min-height: auto; 
     }
 
     .deletebutton{
@@ -183,7 +182,7 @@
         padding-left: 5.3rem;
         display: flex;
         align-items: center;
-        margin-right: 0.5rem; /* Add spacing here */
+        margin-right: 0.5rem; 
         font-weight: bold;
         color:#FFFFFF;
     }
@@ -218,17 +217,17 @@
 
     .foodImage {
         grid-area: image;
-        width: 80px; /* Adjust the width as needed */
-        height: 80px; /* Adjust the height as needed */
-        margin-right: 20px; /* Add spacing between the image and other details */
-        overflow: hidden; /* Hide any overflowing parts of the image */
-        border-radius: 10px; /* Add border radius for a rounded appearance */
+        width: 80px; 
+        height: 80px; 
+        margin-right: 20px; 
+        overflow: hidden; 
+        border-radius: 10px; /
     }
 
     .foodImage img {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Maintain the aspect ratio and cover the container */
+        object-fit: cover; 
     }
 
     .total{
