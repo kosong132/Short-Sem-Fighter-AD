@@ -11,19 +11,6 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "tepi_sungai";
-
-// Create a connection
-$conn = new mysqli($servername, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
     $users = "CREATE TABLE Users (
         user_id VARCHAR(20) NOT NULL UNIQUE,
         user_name VARCHAR(50) NOT NULL,
@@ -45,14 +32,6 @@ if ($conn->connect_error) {
         CONSTRAINT menu_pk PRIMARY KEY(menu_code))";
 
 
-$order = "CREATE TABLE Orders(
-    order_id INT(10) AUTO_INCREMENT,
-    user_id VARCHAR(10) NOT NULL,
-    payment_status VARCHAR(15) NOT NULL,
-    payment_date DATETIME NOT NULL,
-    total_price FLOAT(8) NOT NULL,
-    CONSTRAINT orderid_pk PRIMARY KEY(order_id,user_id),
-    CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES Users(user_id))";
     $order = "CREATE TABLE Orders(
         order_id INT(10) AUTO_INCREMENT,
         user_id VARCHAR(10) NOT NULL,
@@ -61,8 +40,7 @@ $order = "CREATE TABLE Orders(
         total_price FLOAT(8) NOT NULL,
         CONSTRAINT orderid_pk PRIMARY KEY(order_id,user_id),
         CONSTRAINT user_fk FOREIGN KEY(user_id) REFERENCES Users(user_id))";
-
-
+ 
     $orderdetail = "CREATE TABLE Orderdetails(
         item_id INT AUTO_INCREMENT PRIMARY KEY,
         order_id INT(10) NOT NULL,
@@ -77,7 +55,6 @@ $order = "CREATE TABLE Orders(
     } else {
         echo "Error creating table: " . mysqli_connect_error($conn);
     }
-
 
     if (mysqli_query($conn, $menu)) {
         echo "Table Menu created successfully";
@@ -98,7 +75,6 @@ $order = "CREATE TABLE Orders(
     } else {
         echo "Error creating table: " . mysqli_connect_error($conn);
     }
-
 
 
     //Close connection
